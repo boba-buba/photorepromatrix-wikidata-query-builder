@@ -11,12 +11,12 @@
 		<!-- this is needed because vue2-common is not recognizing the errors property from mapGetters -->
 		<!-- eslint-disable-next-line vue/no-undef-properties -->
 		<div v-if="store.errors.length !== 0" class="querybuilder-result__errors">
-			<Message
+			<CdxMessage
 				v-for="( error, index ) in store.errors"
 				:key="index"
 				:type="error.type">
 				<span>{{ $i18n( error.message ) }}</span>
-			</Message>
+			</CdxMessage>
 		</div>
 		<div v-else-if="encodedQuery.length === 0">
 			<div class="querybuilder-result__description">
@@ -34,36 +34,23 @@
 	</div>
 </template>
 
-<script lang="ts">
-import { Message } from '@wmde/wikit-vue-components';
-import { defineComponent } from '@/compat';
+<script setup lang="ts">
+import { CdxMessage } from '@wikimedia/codex';
 import { useStore } from '@/store/index';
 
-export default defineComponent( {
-	name: 'QueryResult',
-	components: {
-		Message,
-	},
-	props: {
-		encodedQuery: {
-			type: String,
-			default: '',
-		},
-		iframeRenderKey: {
-			type: Number,
-			default: 0,
-		},
-	},
-	setup() {
-		const store = useStore();
-		return { store };
-	},
-	data() {
-		return {
-			queryServiceEmbedUrl: process.env.VUE_APP_QUERY_SERVICE_EMBED_URL,
-			queryServiceUrl: process.env.VUE_APP_QUERY_SERVICE_URL,
-		};
-	},
+interface Props {
+	encodedQuery: string;
+	iframeRenderKey: number;
+}
+
+const store = useStore();
+
+const queryServiceEmbedUrl = process.env.VUE_APP_QUERY_SERVICE_EMBED_URL;
+const queryServiceUrl = process.env.VUE_APP_QUERY_SERVICE_URL;
+
+withDefaults( defineProps<Props>(), {
+	encodedQuery: '',
+	iframeRenderKey: 0,
 } );
 </script>
 

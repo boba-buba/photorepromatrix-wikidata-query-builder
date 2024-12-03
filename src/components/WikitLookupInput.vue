@@ -48,9 +48,7 @@ import isEqual from 'lodash.isequal';
 import WikitOptionsMenu from './WikitOptionsMenu.vue';
 import WikitInput from './WikitInput.vue';
 
-function generateUid( componentName: string ): string {
-	return `${componentName}-${Math.floor( Math.random() * 1000000 )}`;
-}
+import { generateUid } from '@/utils';
 
 const menu = ref<InstanceType<typeof WikitOptionsMenu> | null>( null );
 
@@ -65,14 +63,14 @@ const keyboardHoverId: Ref< string | null> = ref( null );
 const optionsMenuId: Ref<string> = ref( generateUid( 'wikit-OptionsMenu' ) );
 
 interface Props {
-	feedbackType: null | 'warning' | 'error';
-	menuItems: unknown[];
-	disabled: boolean;
-	ariaRequired: boolean;
-	placeholder: string;
-	value: null | object;
-	searchInput: string;
-	label: string;
+	feedbackType?: null | 'warning' | 'error';
+	menuItems?: unknown[];
+	disabled?: boolean;
+	ariaRequired?: boolean;
+	placeholder?: string;
+	value?: null | object;
+	searchInput?: string;
+	label?: string;
 }
 
 type MenuItem = {
