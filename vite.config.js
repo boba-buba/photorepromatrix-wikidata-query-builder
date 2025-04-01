@@ -11,18 +11,7 @@ const base = ( process.env.NODE_ENV === 'production' ) ? '/querybuilder/' : '/';
 export default {
 	base,
 	plugins: [
-		createVuePlugin( {
-			template: {
-				compilerOptions: {
-					compatConfig: {
-						MODE: 3,
-						COMPILER_V_ON_NATIVE: true,
-						COMPILER_V_BIND_SYNC: true,
-						GLOBAL_MOUNT: false,
-					},
-				},
-			},
-		} ),
+		createVuePlugin(),
 		envCompatible(),
 	],
 	resolve: {
@@ -30,22 +19,6 @@ export default {
 			{
 				find: '@',
 				replacement: path.resolve( __dirname, './src' ),
-			},
-			{
-				find: 'vue',
-				replacement: '@vue/compat',
-			},
-			{
-				find: '@vue/composition-api',
-				replacement: '@vue/compat',
-			},
-			{
-				find: 'wikit-dist',
-				replacement: path.resolve( __dirname, './node_modules/@wmde/wikit-vue-components/dist' ),
-			},
-			{
-				find: '@wmde/wikit-vue-components',
-				replacement: '@wmde/wikit-vue-components/dist/wikit-vue-components-vue3compat.common.js',
 			},
 		],
 	},
@@ -63,7 +36,6 @@ export default {
 				// @use 'sass:math' is for WikitPopover component
 				additionalData: `
 				@use 'sass:math';
-				@import "@wmde/wikit-tokens/dist/variables";
 				@import '@wikimedia/codex-design-tokens/theme-wikimedia-ui';
 				`,
 			},

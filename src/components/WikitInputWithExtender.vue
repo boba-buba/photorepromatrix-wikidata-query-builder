@@ -20,10 +20,10 @@
 			:feedback-type="feedbackType"
 			:placeholder="placeholder"
 			:disabled="disabled"
-			@focus.native="showExtension = true"
-			@blur.native="showExtension = false"
-			@keydown.native.esc="showExtension = false"
-			@input="onInput"
+			@focus="showExtension = true"
+			@blur="showExtension = false"
+			@keydown.esc="showExtension = false"
+			@update:model-value="onInput"
 		/>
 		<div v-if="showExtension" class="wikit-InputWithExtender__extension">
 			<slot />
@@ -56,24 +56,24 @@ interface Props {
 	error: ErrorProp;
 	disabled?: boolean;
 	placeholder?: string;
-	value?: string;
-	label?: string;
+	value?: string | null;
+	label?: string | null;
 }
 
 const props = withDefaults( defineProps<Props>(), {
 	disabled: false,
 	placeholder: '',
-	value: '',
-	label: '',
+	value: null,
+	label: null,
 } );
 
-const feedbackType = computed( () => getFeedbackTypeFromProps( props ) );
+const feedbackType = computed( getFeedbackTypeFromProps( props ) );
 
-const emit = defineEmits( [ 'input' ] );
+const emit = defineEmits( [ 'update:modelValue' ] );
 
 function onInput( value: string ): void {
 	showExtension.value = true;
-	emit( 'input', value );
+	emit( 'update:modelValue', value );
 }
 
 </script>
@@ -86,6 +86,7 @@ function onInput( value: string ): void {
 		display: flex;
 		align-items: center;
 		gap: $spacing-50;
+		font-weight: $font-weight-bold;
 	}
 
 	&__extension {

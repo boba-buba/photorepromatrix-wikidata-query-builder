@@ -5,7 +5,7 @@
 		class="wikit wikit-Input"
 		:class="[ { [ `wikit-Input--${feedbackType}` ]: feedbackType !== null } ]"
 		:value="value"
-		@input="$emit( 'input', $event.target.value )"
+		@input="$emit( 'update:modelValue', $event.target.value )"
 	>
 </template>
 
@@ -21,7 +21,7 @@ withDefaults( defineProps<Props>(), {
 	value: '',
 } );
 
-defineEmits( [ 'input' ] );
+defineEmits( [ 'update:modelValue' ] );
 </script>
 
 <style lang="scss">
@@ -36,6 +36,7 @@ defineEmits( [ 'input' ] );
 	line-height: $line-height-xx-small;
 	inline-size: $size-full;
 	box-sizing: $box-sizing-base;
+	padding: $spacing-25 $spacing-50;
 	padding-inline: $spacing-25 $spacing-50;
 	transition-duration: $transition-duration-medium;
 	transition-property: $transition-property-base;

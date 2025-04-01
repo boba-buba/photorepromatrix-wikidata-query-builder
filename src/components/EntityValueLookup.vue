@@ -16,9 +16,9 @@
 import EntityLookup from '@/components/EntityLookup.vue';
 import SearchOptions from '@/data-access/SearchOptions';
 import SearchResult from '@/data-access/SearchResult';
-import { MenuItem } from '@wmde/wikit-vue-components/dist/components/MenuItem';
+import { MenuItem } from '@/types';
 import { PropType } from 'vue';
-import { defineComponent } from '@/compat';
+import { defineComponent } from 'vue';
 import { useStore } from '@/store';
 
 const supportedEntityTypes = {

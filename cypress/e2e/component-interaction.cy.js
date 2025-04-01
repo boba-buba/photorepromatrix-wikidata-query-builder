@@ -172,7 +172,7 @@ describe( 'Component interaction test', () => {
 		cy.get( '.wikit-InputWithExtender__extension' ).click();
 
 		// run query
-		cy.get( '.querybuilder__run .cdx-button--action-progressive' ).click();
+		cy.get( '.querybuilder__run-button' ).click();
 
 		// assert the resulting sparql query
 		cy.get( '.querybuilder-result__iframe' ).then( ( element ) => {
@@ -180,7 +180,7 @@ describe( 'Component interaction test', () => {
 			const query = url.split( '#' )[ 1 ];
 
 			const expected = `SELECT DISTINCT ?item ?itemLabel WHERE {
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE]". }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }
   {
     SELECT DISTINCT ?item WHERE {
       {

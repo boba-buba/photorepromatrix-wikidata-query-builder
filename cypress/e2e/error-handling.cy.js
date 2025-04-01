@@ -17,7 +17,7 @@ function wikibaseApiRequest( query ) {
 describe( 'Test error handling of the Query Builder', () => {
 	it( 'Tests whether the Query builder handles user input error correctly.', () => {
 		cy.visit( '/' );
-		const runQueryButtonSelector = '.querybuilder__run .cdx-button--action-progressive';
+		const runQueryButtonSelector = '.querybuilder__run-button.cdx-button--action-progressive';
 
 		// Run query without any input and assert if any error message is displayed
 		cy.get( runQueryButtonSelector ).click();
@@ -91,7 +91,7 @@ describe( 'Test error handling of the Query Builder', () => {
 			const query = url.split( '#' )[ 1 ];
 
 			const expected = `SELECT DISTINCT ?item ?itemLabel WHERE {
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE]". }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }
   {
     SELECT DISTINCT ?item WHERE {
       ?item p:P1429 ?statement0.
