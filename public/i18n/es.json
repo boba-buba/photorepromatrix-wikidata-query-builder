@@ -4,6 +4,7 @@
 			"Destinid10 2",
 			"Dgstranz",
 			"Fitoschido",
+			"JaimeDes",
 			"Lys534",
 			"MarcoAurelio",
 			"Nelthal",
@@ -42,6 +43,7 @@
 	"query-builder-result-error-missing-property": "Por favor, selecciona una propiedad",
 	"query-builder-result-error-missing-value": "Por favor, introduce un valor",
 	"query-builder-add-condition": "Añadir condición",
+	"query-builder-value-type-label": "Relación entre propiedad y valor",
 	"query-builder-value-type-relation-dropdown-matching": "buscando",
 	"query-builder-value-type-relation-dropdown-without": "sin",
 	"query-builder-value-type-relation-dropdown-regardless-of-value": "sin importar el valor",
@@ -67,7 +69,7 @@
 	"query-builder-include-subclasses-tooltip": "Incluye valores de subconjuntos del valor seleccionado, por ejemplo, al filtrar por «escuela → situado en la entidad territorial administrativa → Atenas», también incluirá «escuela → ubicación → Atenas». Al marcar esta casilla, es probable que se genere una lista más completa de resultados. Desmárcala si solo necesitas ver correspondencias exactas para el valor seleccionado.",
 	"query-builder-negation-option-label-with": "Con",
 	"query-builder-negation-option-label-without": "Sin",
-	"query-builder-sharable-link-text": "Obtén un enlace para compartir",
+	"query-builder-sharable-link-text": "Copiar el enlace de la consulta",
 	"query-builder-sharable-link-message": "¡URL copiada al portapapeles!",
 	"query-builder-quantity-value-error-number": "Inserte un número",
 	"query-builder-quantity-value-error-unit": "Seleccione una unidad válida o elimine la entrada",
@@ -86,6 +88,10 @@
 	"query-builder-footer-wikimedia-deutchland": "Wikimedia Alemania",
 	"query-builder-footer-team": "Hecho con ❤️ por el [$1 equipo de Wikidata]",
 	"query-builder-footer-more-data-quality-tools": "Más herramientas de calidad de datos",
+	"query-builder-footer-mismatch-finder": "Buscador de discrepancias",
+	"query-builder-footer-item-quality-evaluator": "Evaluador de calidad de elementos",
+	"query-builder-footer-curious-facts": "Datos curiosos",
+	"query-builder-footer-constraints-violation-checker": "Verificación de violación de restricciones",
 	"query-builder-date-input-value-label": "Valor",
 	"query-builder-date-input-placeholder": "por ejemplo 31-12-2020",
 	"query-builder-date-input-prompt-text": "Por favor, inserta una fecha",
@@ -96,5 +102,6 @@
 	"query-builder-language-selector-options-menu-aria-label": "Idiomas",
 	"query-builder-language-selector-clear-button-label": "Borrar campo de entrada",
 	"query-builder-language-selector-mobile-header": "Selecciona un idioma",
-	"query-builder-language-selector-close-button-label": "Cerrar selector de idioma"
+	"query-builder-language-selector-close-button-label": "Cerrar selector de idioma",
+	"query-builder-toggle-language-selector-button": "Activar o desactivar el selector de idioma"
 }

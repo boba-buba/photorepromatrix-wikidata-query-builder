@@ -65,7 +65,7 @@
 	"query-builder-include-subclasses-tooltip": "Omvat waarden uit subsets van de geselecteerde waarde, bijv. bij het filteren op \"school → gelegen in de administratieve territoriale entiteit → Griekenland\", neem ook \"school → gelegen in... → Athene\" op in de resultaten. Als u dit vakje aanvinkt, krijgt u waarschijnlijk een completere lijst met resultaten. Schakel het vinkje uit als u alleen exacte overeenkomsten voor de geselecteerde waarde wilt zien.",
 	"query-builder-negation-option-label-with": "Met",
 	"query-builder-negation-option-label-without": "Zonder",
-	"query-builder-sharable-link-text": "Haal deelbare link op",
+	"query-builder-sharable-link-text": "Koppeling naar zoekopdracht kopiëren",
 	"query-builder-sharable-link-message": "URL is gekopieerd naar het klembord!",
 	"query-builder-quantity-value-error-number": "Gelieve een cijfer in te voeren",
 	"query-builder-quantity-value-error-unit": "Selecteer een geldige eenheid of verwijder de input",
