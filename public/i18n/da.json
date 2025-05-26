@@ -48,5 +48,7 @@
 	"query-builder-footer-team": "Lavet med ❤️ af [$1 Wikidata team]",
 	"query-builder-date-input-value-label": "Værdi",
 	"query-builder-date-input-placeholder": "for eksempel 31-12-2020",
-	"query-builder-date-input-prompt-text": "Indtast venligst en dato"
+	"query-builder-date-input-prompt-text": "Indtast venligst en dato",
+	"query-builder-language-selector-options-menu-aria-label": "Sprog",
+	"query-builder-language-selector-mobile-header": "Vælg et sprog"
 }

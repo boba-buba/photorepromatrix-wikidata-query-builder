@@ -4,6 +4,7 @@
 			"Agaafd",
 			"Hedda",
 			"Joseph",
+			"Leo",
 			"MuratTheTurkish",
 			"SaldırganSincap",
 			"ToprakM"
@@ -37,6 +38,7 @@
 	"query-builder-result-error-missing-property": "Lütfen bir özellik seçin",
 	"query-builder-result-error-missing-value": "Lütfen bir değer girin",
 	"query-builder-add-condition": "Koşul ekle",
+	"query-builder-value-type-label": "Değer Mülkiyet İlişkisi",
 	"query-builder-value-type-relation-dropdown-matching": "eşleme",
 	"query-builder-value-type-relation-dropdown-without": "olmadan",
 	"query-builder-value-type-relation-dropdown-regardless-of-value": "değeri ne olursa olsun",
