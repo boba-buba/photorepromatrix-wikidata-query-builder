@@ -11,7 +11,7 @@
 		</label>
 		<WikitInput
 			:id="id"
-			:value="value"
+			:model-value="value"
 			:feedback-type="feedbackType"
 			:placeholder="placeholder"
 			:disabled="disabled"

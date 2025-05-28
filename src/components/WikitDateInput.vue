@@ -4,23 +4,23 @@
 	>
 		<WikitInputWithExtender
 			:label="label"
-			:value="value"
+			:model-value="modelValue"
 			:error="error"
 			:placeholder="placeholder"
 			:disabled="disabled"
-			@update:model-value="$emit( 'input', $event )"
+			@update:model-value="$emit( 'update:modelValue', $event )"
 		>
 			<template #default>
 				<p class="wikit-DateInput__IntroText">
 					{{ resultsIntroText }}
 				</p>
 				<p v-if="parsedValue" class="wikit-DateInput__ParsedValue">
-					<b>{{ parsedValue }}</b>
+					{{ parsedValue }}
 				</p>
-				<p v-if="promptText && !value" class="wikit-DateInput__Prompt">
+				<p v-if="promptText && !modelValue" class="wikit-DateInput__Prompt">
 					{{ promptText }}
 				</p>
-				<WikitBouncingDots v-if="!parsedValue && value" type="small" />
+				<WikitBouncingDots v-if="!parsedValue && modelValue" type="small" />
 				<div v-if="calendarNotice && parsedValue" class="wikit-DateInput__CalendarNotice">
 					<WikitIcon
 						color="inherit"
@@ -50,7 +50,7 @@ interface Props {
 	parsedValue?: string | null;
 	resultsIntroText?: string | null;
 	promptText?: string | null;
-	value?: string | null;
+	modelValue?: string | null;
 	calendarNotice?: string | null;
 }
 
@@ -61,11 +61,11 @@ withDefaults( defineProps<Props>(), {
 	parsedValue: null,
 	resultsIntroText: null,
 	promptText: null,
-	value: null,
+	modelValue: null,
 	calendarNotice: null,
 } );
 
-defineEmits( [ 'input' ] );
+defineEmits( [ 'update:modelValue' ] );
 
 </script>
 

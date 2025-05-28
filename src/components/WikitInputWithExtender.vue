@@ -16,7 +16,7 @@
 		</span>
 		<WikitInput
 			:id="id"
-			:value="value"
+			:model-value="modelValue"
 			:feedback-type="feedbackType"
 			:placeholder="placeholder"
 			:disabled="disabled"
@@ -56,14 +56,14 @@ interface Props {
 	error: ErrorProp;
 	disabled?: boolean;
 	placeholder?: string;
-	value?: string | null;
+	modelValue?: string | null;
 	label?: string | null;
 }
 
 const props = withDefaults( defineProps<Props>(), {
 	disabled: false,
 	placeholder: '',
-	value: null,
+	modelValue: null,
 	label: null,
 } );
 

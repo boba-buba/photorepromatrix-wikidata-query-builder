@@ -15,7 +15,7 @@
 				:id="id"
 				class="wikit-QuantityInput__number-input"
 				:placeholder="numberInputPlaceholder"
-				:value="numberInputValue"
+				:model-value="numberInputValue"
 				:disabled="disabled"
 				:feedback-type="errorCause === 'number' || errorCause === 'both' ? feedbackType : null"
 				@update:model-value="onNumberInput"

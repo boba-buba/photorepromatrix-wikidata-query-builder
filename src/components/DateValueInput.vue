@@ -9,7 +9,7 @@
 		:error="error ? { message: $i18n( error.message ), type: error.type } : null"
 		:parsed-value="( modelValue && modelValue.formattedValue ) ? modelValue.formattedValue : null"
 		:disabled="disabled"
-		@input="onInput( $event )"
+		@update:model-value="onUpdate( $event )"
 	>
 		<template #suffix>
 			<InfoTooltip
@@ -56,7 +56,7 @@ export default defineComponent( {
 		};
 	},
 	methods: {
-		onInput( event: string ): void {
+		onUpdate( event: string ): void {
 			if ( this.debouncedDateValue === null ) {
 				this.debouncedDateValue = debounce( async ( debouncedDateInput: string ) => {
 					this.$emit( 'update:modelValue', debouncedDateInput );

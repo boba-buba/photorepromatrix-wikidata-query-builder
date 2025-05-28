@@ -4,7 +4,7 @@
 		@keydown="triggerKeyDown"
 	>
 		<WikitInput
-			:value="searchInput"
+			:model-value="searchInput"
 			:feedback-type="feedbackType"
 			:placeholder="placeholder"
 			:disabled="disabled"
