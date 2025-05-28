@@ -4,7 +4,7 @@
 		type="text"
 		class="wikit wikit-Input"
 		:class="[ { [ `wikit-Input--${feedbackType}` ]: feedbackType !== null } ]"
-		:value="value"
+		:value="modelValue"
 		@input="$emit( 'update:modelValue', $event.target.value )"
 	>
 </template>
@@ -13,12 +13,12 @@
 
 interface Props {
 	feedbackType?: 'warning'|'error'|null;
-	value: string | null;
+	modelValue: string | null;
 }
 
 withDefaults( defineProps<Props>(), {
 	feedbackType: null,
-	value: '',
+	modelValue: '',
 } );
 
 defineEmits( [ 'update:modelValue' ] );
