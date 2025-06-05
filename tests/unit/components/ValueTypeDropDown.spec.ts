@@ -55,7 +55,7 @@ describe( 'ValueTypeDropDown.vue', () => {
 		} );
 
 		const optionValues = wrapper.findComponent( CdxSelect ).props( 'menuItems' ).map(
-			( value: MenuItemData | MenuGroupData, _index: number, _array: ( MenuItemData | MenuGroupData )[] ) =>
+			( value: MenuItemData | MenuGroupData ) =>
 				( value as MenuItemData ).value,
 		);
 
@@ -75,7 +75,7 @@ describe( 'ValueTypeDropDown.vue', () => {
 		} );
 
 		const optionValues = wrapper.findComponent( CdxSelect ).props( 'menuItems' ).map(
-			( value: MenuItemData | MenuGroupData, _index: number, _array: ( MenuItemData | MenuGroupData )[] ) =>
+			( value: MenuItemData | MenuGroupData ) =>
 				( value as MenuItemData ).value,
 		);
 
@@ -101,7 +101,7 @@ describe( 'ValueTypeDropDown.vue', () => {
 		} );
 
 		const optionValues = wrapper.findComponent( CdxSelect ).props( 'menuItems' ).map(
-			( value: MenuItemData | MenuGroupData, _index: number, _array: ( MenuItemData | MenuGroupData )[] ) =>
+			( value: MenuItemData | MenuGroupData ) =>
 				( value as MenuItemData ).value,
 		);
 
