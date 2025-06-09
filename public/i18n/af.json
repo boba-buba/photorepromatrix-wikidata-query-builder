@@ -54,6 +54,7 @@
 	"query-builder-sharable-link-message": "Teks na knipbord gekopieer!",
 	"query-builder-quantity-value-error-number": "Vul asseblief 'n getal in",
 	"query-builder-quantity-value-number-input-placeholder": "Vul 'n getal in",
+	"query-builder-quantity-value-unit-lookup-screenreader-label": "Eenheid (opsioneel)",
 	"query-builder-footer-view-source": "Kry bronteks",
 	"query-builder-footer-report-link": "Rapporteer 'n fout",
 	"query-builder-footer-about-us": "Meer oor ons",
