@@ -3,6 +3,7 @@ import ValueTypeDropDown from '@/components/ValueTypeDropDown.vue';
 import PropertyValueRelation from '@/data-model/PropertyValueRelation';
 import { mount } from '@vue/test-utils';
 import { createI18n } from 'vue-banana-i18n';
+import { MenuItemData, MenuGroupData } from '@wikimedia/codex';
 
 const i18n = createI18n( {
 	messages: {},
@@ -54,7 +55,8 @@ describe( 'ValueTypeDropDown.vue', () => {
 		} );
 
 		const optionValues = wrapper.findComponent( CdxSelect ).props( 'menuItems' ).map(
-			( value: { value: string | number } ) => value.value,
+			( value: MenuItemData | MenuGroupData ) =>
+				( value as MenuItemData ).value,
 		);
 
 		expect( optionValues ).toStrictEqual( [ 'matching', 'without', 'regardless-of-value' ] );
@@ -73,7 +75,8 @@ describe( 'ValueTypeDropDown.vue', () => {
 		} );
 
 		const optionValues = wrapper.findComponent( CdxSelect ).props( 'menuItems' ).map(
-			( value: { value: string | number } ) => value.value,
+			( value: MenuItemData | MenuGroupData ) =>
+				( value as MenuItemData ).value,
 		);
 
 		expect( optionValues ).toStrictEqual( [
@@ -98,7 +101,8 @@ describe( 'ValueTypeDropDown.vue', () => {
 		} );
 
 		const optionValues = wrapper.findComponent( CdxSelect ).props( 'menuItems' ).map(
-			( value: { value: string | number } ) => value.value,
+			( value: MenuItemData | MenuGroupData ) =>
+				( value as MenuItemData ).value,
 		);
 
 		expect( optionValues ).toStrictEqual( [
