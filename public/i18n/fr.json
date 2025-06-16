@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Derugon",
 			"Florian COLLIN",
 			"Gomoko",
 			"Mahabarata",
@@ -64,7 +65,7 @@
 	"query-builder-include-subclasses-tooltip": "Inclure les valeurs des sous-ensembles de la valeur sélectionnée, par exemple en filtrant sur « école → situé dans l’entité territoriale administrative → Grèce », inclure également « école → situé à... → Athènes ». Cocher cette case résultera probablement en une liste plus complète de résultats. Décochez si vous voulez ne voir que les correspondances exactes pour la valeur sélectionnée.",
 	"query-builder-negation-option-label-with": "Avec",
 	"query-builder-negation-option-label-without": "Sans",
-	"query-builder-sharable-link-text": "Obtenir un lien partageable",
+	"query-builder-sharable-link-text": "Copier le lien vers la requête",
 	"query-builder-sharable-link-message": "URL copiée vers le presse-papiers !",
 	"query-builder-quantity-value-error-number": "Veuillez saisir un nombre",
 	"query-builder-quantity-value-error-unit": "Veuillez saisir une unité valide ou supprimer l’entrée",
