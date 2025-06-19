@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Hakimi97",
 			"Tofeiku",
 			"Ultron90"
 		]
@@ -33,6 +34,7 @@
 	"query-builder-result-error-missing-property": "Sila pilih sifat",
 	"query-builder-result-error-missing-value": "Sila masukkan nilai",
 	"query-builder-add-condition": "Tambahkan syarat",
+	"query-builder-value-type-label": "Hubungan Nilai Sifat",
 	"query-builder-value-type-relation-dropdown-matching": "memadankan",
 	"query-builder-value-type-relation-dropdown-without": "tanpa",
 	"query-builder-value-type-relation-dropdown-regardless-of-value": "tanpa mengira nilai",
@@ -58,7 +60,7 @@
 	"query-builder-include-subclasses-tooltip": "Memasukkan nilai daripada subset nilai terpilih, contohnya, apabila menapis untuk \"sekolah → terletak di wilayah entiti pentadbiran → Greece\", juga termasuk \"sekolah → located in... → Athens\" dalam hasil. Memeriksa kotak ini akan kemungkinan mengakibatkan senarai hasil yang lebih lengkap. Nyahtanda jika anda perlu melihat hanya padanan yang tepat untuk nilai terpilih.",
 	"query-builder-negation-option-label-with": "Dengan",
 	"query-builder-negation-option-label-without": "Tanpa",
-	"query-builder-sharable-link-text": "Dapatkan pautan yang dibolehkongsikan",
+	"query-builder-sharable-link-text": "Dapatkan pautan untuk pertanyaan",
 	"query-builder-sharable-link-message": "URL disalin ke papan keratan!",
 	"query-builder-quantity-value-error-number": "Sila masukkan nombor",
 	"query-builder-quantity-value-error-unit": "Sila pilih unit yang sah atau padamkan masukan",
