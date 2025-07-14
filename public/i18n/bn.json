@@ -56,7 +56,7 @@
 	"query-builder-include-subclasses": "অনুসন্ধানে সম্পর্কিত মানসমূহ অন্তর্ভুক্ত করুন (প্রস্তাবিত)",
 	"query-builder-negation-option-label-with": "এটি সহ",
 	"query-builder-negation-option-label-without": "এটি ছাড়া",
-	"query-builder-sharable-link-text": "শেয়ারযোগ্য সংযোগ নিন",
+	"query-builder-sharable-link-text": "কোয়েরির লিঙ্ক অনুলিপি করুন",
 	"query-builder-sharable-link-message": "ক্লিপবোর্ডে ইউআরএল অনুলিপি করা হয়েছে!",
 	"query-builder-quantity-value-error-number": "অনুগ্রহ করে একটি সংখ্যা লিখুন",
 	"query-builder-quantity-value-error-unit": "অনুগ্রহ করে একটি বৈধ একক নির্বাচন করুন অথবা ইনপুট সরান",

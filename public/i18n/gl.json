@@ -59,7 +59,7 @@
 	"query-builder-include-subclasses-tooltip": "Incluír os valores de subconxuntos do valor seleccionado. Por exemplo, ao filtrar \"escola → situada na entidade territorial administrativa → Grecia\", incluír tamén \"escola → situada en... → Atenas\" nos resultados. Marcar esta caixa probablemente dará como resultado unha lista de resultados máis completa. Desmarque a caixa se precisa ver só coincidencias exactas para o valor seleccionado.",
 	"query-builder-negation-option-label-with": "Con",
 	"query-builder-negation-option-label-without": "Sen",
-	"query-builder-sharable-link-text": "Obter unha ligazón para compartir",
+	"query-builder-sharable-link-text": "Copiar a ligazón á consulta",
 	"query-builder-sharable-link-message": "O enderezo URL copiouse no portapapeis!",
 	"query-builder-quantity-value-error-number": "Escriba un número",
 	"query-builder-quantity-value-error-unit": "Seleccione unha unidade válida ou elimine a entrada",
