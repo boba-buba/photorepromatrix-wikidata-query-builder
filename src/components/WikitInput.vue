@@ -75,9 +75,11 @@ defineEmits( [ 'update:modelValue' ] );
 
 	&--error {
 		border-color: $border-color-error;
+		background-color: $background-color-error-subtle;
 
 		&:hover {
 			border-color: $border-color-error--hover;
+			background-color: $background-color-error-subtle--hover;
 		}
 
 		&:focus,

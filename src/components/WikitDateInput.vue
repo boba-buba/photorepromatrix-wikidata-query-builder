@@ -76,7 +76,7 @@ defineEmits( [ 'update:modelValue' ] );
 		font-family: $font-family-system-sans;
 		font-weight: $font-weight-normal;
 		font-size: $font-size-medium;
-		line-height: $line-height-xx-small;
+		line-height: $line-height-small;
 		color: $color-base;
 	}
 
@@ -85,7 +85,7 @@ defineEmits( [ 'update:modelValue' ] );
 		font-family: $font-family-system-sans;
 		font-weight: $font-weight-semi-bold;
 		font-size: $font-size-medium;
-		line-height: $line-height-xx-small;
+		line-height: $line-height-small;
 		color: $color-base;
 	}
 
@@ -102,7 +102,7 @@ defineEmits( [ 'update:modelValue' ] );
 		font-family: $font-family-system-sans;
 		font-weight: $font-weight-normal;
 		font-size: $font-size-medium;
-		line-height: $line-height-xx-small;
+		line-height: $line-height-small;
 		color: $color-placeholder;
 	}
 }
