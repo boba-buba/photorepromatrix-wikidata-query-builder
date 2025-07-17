@@ -225,7 +225,7 @@ $tinyViewportWidth: $max-width-breakpoint-mobile; // Set so that inputs show all
 	}
 
 	&__remove {
-		margin-inline-start: var(--dimension-layout-small);
+		margin-inline-start: $spacing-100 !important;
 		float: inline-end;
 		block-size: max-content;
 
@@ -237,7 +237,7 @@ $tinyViewportWidth: $max-width-breakpoint-mobile; // Set so that inputs show all
 
 	&__toggle-button-group {
 		white-space: nowrap;
-		float: inline-start;
+		padding-block-start: $spacing-12;
 		margin-block-start: var(--dimension-layout-small);
 		margin-inline-end: var(--dimension-layout-large);
 

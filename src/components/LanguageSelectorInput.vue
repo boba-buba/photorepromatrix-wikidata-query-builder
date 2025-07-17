@@ -84,7 +84,7 @@ defineExpose( { focus } );
 	font-weight: 400;
 	box-sizing: border-box;
 	flex-grow: 1;
-	border-color: #36c;
+	border-color: $accent-color-base;
 	block-size: 20px;
 
 	&:focus {

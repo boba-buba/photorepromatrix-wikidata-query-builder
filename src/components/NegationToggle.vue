@@ -1,9 +1,10 @@
 <template>
-	<CdxToggleButtonGroup
-		class="negationToggle"
-		:model-value="modelValue"
-		:buttons="buttons"
-		@update:model-value="$emit( 'update:modelValue', $event )" />
+	<div class="negationToggle">
+		<CdxToggleButtonGroup
+			:model-value="modelValue"
+			:buttons="buttons"
+			@update:model-value="$emit( 'update:modelValue', $event )" />
+	</div>
 </template>
 
 <script setup lang="ts">

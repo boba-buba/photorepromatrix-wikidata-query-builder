@@ -27,7 +27,7 @@ withDefaults( defineProps<Props>(), {
 	&::after {
 		content: '';
 		display: inline-block;
-		background-color: $color-placeholder;
+		background-color: $accent-color-base;
 		border-radius: $border-radius-circle;
 		animation: bounce-delay $animation-duration-medium infinite ease-in-out both;
 		animation-delay: $animation-delay-medium;

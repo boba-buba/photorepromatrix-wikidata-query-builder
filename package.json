@@ -29,9 +29,9 @@
   "dependencies": {
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@types/rdf-js": "^4.0.2",
-    "@wikimedia/codex": "^2.0.0",
-    "@wikimedia/codex-design-tokens": "^2.0.0",
-    "@wikimedia/codex-icons": "^2.0.0",
+    "@wikimedia/codex": "^2.2.0",
+    "@wikimedia/codex-design-tokens": "^2.2.0",
+    "@wikimedia/codex-icons": "^2.2.0",
     "@wikimedia/language-data": "^1.1.8",
     "core-js": "^3.37.1",
     "lodash.debounce": "^4.0.8",
