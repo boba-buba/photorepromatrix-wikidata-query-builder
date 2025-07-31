@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"ACheJu",
 			"Eduardo Addad de Oliveira",
 			"Eduardoaddad",
 			"EnaldoSS",
@@ -39,6 +40,7 @@
 	"query-builder-result-error-missing-property": "Selecione uma propriedade",
 	"query-builder-result-error-missing-value": "por favor insira um valor",
 	"query-builder-add-condition": "Adicionar condição",
+	"query-builder-value-type-label": "Relação entre Valor e Propriedade",
 	"query-builder-value-type-relation-dropdown-matching": "correspondente",
 	"query-builder-value-type-relation-dropdown-without": "sem",
 	"query-builder-value-type-relation-dropdown-regardless-of-value": "independentemente do valor",
@@ -64,7 +66,7 @@
 	"query-builder-include-subclasses-tooltip": "Inclui os valores dos subconjuntos do valor selecionado. Por exemplo, quando filtrar para \"escola → situada na entidade territorial administrativa → Grécia\", também incluirá \"escola → localizada em... → Atenas\" aos resultados. Marcar esta caixa provavelmente resultará numa lista de resultados mais completa. Desmarque-a se você só quiser ver coincidências exatas para o valor selecionado.",
 	"query-builder-negation-option-label-with": "Com",
 	"query-builder-negation-option-label-without": "Sem",
-	"query-builder-sharable-link-text": "Obtenha um link compartilhável",
+	"query-builder-sharable-link-text": "Copiar link para consulta",
 	"query-builder-sharable-link-message": "URL copiado para a área de transferência!",
 	"query-builder-quantity-value-error-number": "Por favor, coloque um numero",
 	"query-builder-quantity-value-error-unit": "Selecione uma unidade válida ou remova a entrada",
@@ -97,5 +99,6 @@
 	"query-builder-language-selector-options-menu-aria-label": "Idiomas",
 	"query-builder-language-selector-clear-button-label": "Limpar campo de entrada",
 	"query-builder-language-selector-mobile-header": "Selecione um idioma",
-	"query-builder-language-selector-close-button-label": "Fechar Seleção de Idioma"
+	"query-builder-language-selector-close-button-label": "Fechar Seleção de Idioma",
+	"query-builder-toggle-language-selector-button": "Ativar ou desativar seletor de idioma"
 }

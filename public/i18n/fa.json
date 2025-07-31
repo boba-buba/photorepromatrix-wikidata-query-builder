@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Beginneruser",
+			"Darafsh",
 			"Darknessswamp8",
 			"Ebrahim",
 			"Ebraminio",
@@ -41,6 +42,7 @@
 	"query-builder-result-error-missing-property": "لطفاً یک ویژگی انتخاب کنید",
 	"query-builder-result-error-missing-value": "لطفا یک مقدار وارد کنید",
 	"query-builder-add-condition": "افزودن شرایط",
+	"query-builder-value-type-label": "مقدار ویژگی رابطه",
 	"query-builder-value-type-relation-dropdown-matching": "منطبق کردن",
 	"query-builder-value-type-relation-dropdown-without": "بدون",
 	"query-builder-value-type-relation-dropdown-regardless-of-value": "بدون توجه به مقدار",
@@ -63,9 +65,10 @@
 	"query-builder-limit-number-screenreader-label": "حداکثر تعداد نتایج",
 	"query-builder-label-opt-out": "نمایش شناسه‌ها به‌جای برچسب‌ها (ممکن است از پایان مهلت زمانی جلوگیری کند)",
 	"query-builder-include-subclasses": "دربرگیری مقدارهای مرتبط در جستجو (پیشنهاد شده)",
+	"query-builder-include-subclasses-tooltip": "شامل مقادیر زیرمجموعه‌های مقدار انتخاب‌شده است، مثلاً هنگام فیلتر کردن برای «مدرسه ← واقع در ناحیهٔ اداری ← یونان»، همچنین «مدرسه ← واقع در... ← آتن» را نیز در نتایج بگنجانید. انتخاب این گزینه احتمالاً منجر به فهرستی کامل‌تر از نتایج خواهد شد. اگر فقط می‌خواهید تطابق‌های دقیق با مقدار انتخاب‌شده را ببینید، این گزینه را غیرفعال کنید.",
 	"query-builder-negation-option-label-with": "با",
 	"query-builder-negation-option-label-without": "بدون",
-	"query-builder-sharable-link-text": "دریافت پیوند قابل اشتراک‌گذاری",
+	"query-builder-sharable-link-text": "کپی پیوند به پرس‌وجو",
 	"query-builder-sharable-link-message": "نشانی در بریده‌دان رونویسی شد!",
 	"query-builder-quantity-value-error-number": "لطفاً یک عدد وارد کنید",
 	"query-builder-quantity-value-error-unit": "لطفاً یک یکای معتبر انتخاب کنید یا ورودی را حذف کنید",
