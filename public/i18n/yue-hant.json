@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"JeffreyKim",
+			"Ktchankt",
 			"Winston Sung"
 		]
 	},
@@ -19,7 +20,7 @@
 	"query-builder-lexeme-value-lookup-no-match-found": "搵唔到匹配嘅嘢",
 	"query-builder-sense-value-lookup-no-match-found": "搵唔到匹配嘅嘢",
 	"query-builder-form-value-lookup-no-match-found": "搵唔到匹配嘅嘢",
-	"query-builder-property-lookup-label": "物業",
+	"query-builder-property-lookup-label": "屬性",
 	"query-builder-property-lookup-tooltip": "條件入面嘅 <em>屬性</em> 欄位，係 <em>值</em> 嘅類別或者描述符。 例如，「顏色」係你可能會用嚟表示「藍色」嘅 <em>值</em> 嘅 <em>屬性</em>。",
 	"query-builder-property-lookup-placeholder": "輸入一個屬性",
 	"query-builder-property-lookup-no-match-found": "搵唔到匹配嘅嘢",
@@ -30,10 +31,10 @@
 	"query-builder-result-header": "結果",
 	"query-builder-result-error-empty-form": "睇落查詢建立工具係空嘅，請先輸入有效嘅查詢，然後再試吓執行。",
 	"query-builder-result-error-incomplete-form": "一個或者多個欄位係空嘅，或者包含唔識別嘅內容，請解決所有問題，然後重試。",
-	"query-builder-result-error-missing-property": "請揀一個物業",
+	"query-builder-result-error-missing-property": "請揀一個屬性",
 	"query-builder-result-error-missing-value": "請輸入一個值",
 	"query-builder-add-condition": "加條件",
-	"query-builder-value-type-label": "價值財產關係",
+	"query-builder-value-type-label": "值同屬性關係",
 	"query-builder-value-type-relation-dropdown-matching": "符合",
 	"query-builder-value-type-relation-dropdown-without": "冇",
 	"query-builder-value-type-relation-dropdown-regardless-of-value": "唔理價值",
