@@ -63,7 +63,7 @@
 	"query-builder-include-subclasses-tooltip": "Включает значения из подмножеств выбранного значения, например, при фильтрации по запросу «школа → находится в административно-территориальном округе → Греция», также включать в результаты «школа → находится в ... → Афинах». Установка этого флажка, скорее всего, приведет к более полному списку результатов. Снимите флажок, если вам нужно видеть только точные совпадения для выбранного значения.",
 	"query-builder-negation-option-label-with": "С",
 	"query-builder-negation-option-label-without": "Без",
-	"query-builder-sharable-link-text": "Получить ссылку, чтоб поделиться",
+	"query-builder-sharable-link-text": "Скопировать ссылку в запрос",
 	"query-builder-sharable-link-message": "Адрес скопирован в буфер обмена!",
 	"query-builder-quantity-value-error-number": "Пожалуйста, введите число.",
 	"query-builder-quantity-value-error-unit": "Выберите допустимую единицу измерения или удалите ввод",
