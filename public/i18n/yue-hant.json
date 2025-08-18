@@ -64,7 +64,7 @@
 	"query-builder-sharable-link-text": "複製查詢嘅拎",
 	"query-builder-sharable-link-message": "網址複製咗去剪貼簿！",
 	"query-builder-quantity-value-error-number": "請輸入一個值",
-	"query-builder-quantity-value-error-unit": "唔該揀有效嘅單位或者移除輸入",
+	"query-builder-quantity-value-error-unit": "唔該揀有效嘅單位或者剷走輸入",
 	"query-builder-quantity-value-error-number-and-unit": "請輸入冧巴，然後揀有效嘅單位，或者剷走輸入",
 	"query-builder-quantity-value-label": "價值同單位（可選）",
 	"query-builder-quantity-value-number-input-placeholder": "輸入數值",
