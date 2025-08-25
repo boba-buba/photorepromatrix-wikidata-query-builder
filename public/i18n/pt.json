@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Albertoleoncio",
 			"B3rnas",
 			"GoEThe",
 			"Hamilton Abreu",
@@ -10,7 +11,7 @@
 	},
 	"query-builder-heading": "Construtor de Consultas da wiki Wikidata",
 	"query-builder-intro-heading": "Sobre esta ferramenta",
-	"query-builder-intro-text": "O 'Criador de Consultas' da Wikidados fornece uma interface visual para criar consultas simples à Wikidados. É ideal para os utilizadores com pouca ou nenhuma experiência de [$1 SPARQL], uma linguagem de consultas poderosa. Este criador não oferece toda a funcionalidade do SPARQL, mas pode abrir sempre a consulta no 'Serviço de Consultas', onde a pode ver, editar e expandir através da hiperligação por cima dos resultados. [$2 Os comentário são bem-vindos aqui].",
+	"query-builder-intro-text": "O 'Criador de Consultas' do Wikidata fornece uma interface visual para criar consultas simples ao Wikidata. É ideal para os utilizadores com pouca ou nenhuma experiência de [$1 SPARQL], uma linguagem de consultas poderosa. Este criador não oferece toda a funcionalidade do SPARQL, mas pode abrir sempre a consulta no 'Serviço de Consultas', onde a pode ver, editar e expandir através da hiperligação por cima dos resultados. [$2 Os comentário são bem-vindos aqui].",
 	"query-builder-query-heading": "Consulta",
 	"query-builder-settings-heading": "Configurações",
 	"query-builder-find-all-items": "Encontrar todos os items...",
