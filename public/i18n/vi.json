@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bapham123",
 			"Doraemonluonbentoi",
 			"Flyplanevn27",
 			"Minh Nguyen",
@@ -82,5 +83,9 @@
 	"query-builder-date-input-placeholder": "ví dụ 31/12/2020",
 	"query-builder-date-input-prompt-text": "Xin hãy nhập ngày tháng",
 	"query-builder-date-input-results-intro-text": "Sẽ được xử lý như:",
-	"query-builder-date-input-calendar-notice-text": "Tất cả các ngày tháng được xử lý theo Tây lịch"
+	"query-builder-date-input-calendar-notice-text": "Tất cả các ngày tháng được xử lý theo Tây lịch",
+	"query-builder-language-selector-input-placeholder": "Tìm kiếm ngôn ngữ",
+	"query-builder-language-selector-no-results": "Ngôn ngữ không có sẵn.",
+	"query-builder-language-selector-options-menu-aria-label": "Ngôn ngữ",
+	"query-builder-language-selector-mobile-header": "Chọn ngôn ngữ"
 }
