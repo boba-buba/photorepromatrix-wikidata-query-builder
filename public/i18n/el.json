@@ -36,6 +36,7 @@
 	"query-builder-result-error-missing-property": "Παρακαλούμε επιλέξτε μια ιδιότητα",
 	"query-builder-result-error-missing-value": "Παρακαλούμε καταχωρήστε μια τιμή",
 	"query-builder-add-condition": "Προσθήκη προϋπόθεσης",
+	"query-builder-value-type-label": "Τιμή Ιδιότητα Σχέση",
 	"query-builder-value-type-relation-dropdown-matching": "ταιριάζει",
 	"query-builder-value-type-relation-dropdown-without": "χωρίς",
 	"query-builder-value-type-relation-dropdown-regardless-of-value": "ανεξάρτητα από τιμή",
