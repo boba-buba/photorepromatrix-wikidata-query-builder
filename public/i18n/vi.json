@@ -7,7 +7,8 @@
 			"Minh Nguyen",
 			"Nghiemtrongdai VN",
 			"Nguyenphutrong2",
-			"Nvdtn19"
+			"Nvdtn19",
+			"Yuki Shiromita"
 		]
 	},
 	"query-builder-heading": "Trình xây dựng truy vấn Wikidata",
@@ -19,6 +20,9 @@
 	"query-builder-input-value-label": "Giá trị",
 	"query-builder-input-value-placeholder": "Nhập giá trị",
 	"query-builder-item-value-lookup-no-match-found": "Không tìm thấy kết quả",
+	"query-builder-lexeme-value-lookup-no-match-found": "Không tìm thấy kết quả",
+	"query-builder-sense-value-lookup-no-match-found": "Không tìm thấy kết quả",
+	"query-builder-form-value-lookup-no-match-found": "Không tìm thấy kết quả",
 	"query-builder-property-lookup-label": "Thuộc tính",
 	"query-builder-property-lookup-placeholder": "Nhập thuộc tính",
 	"query-builder-property-lookup-no-match-found": "Không tìm thấy kết quả",
@@ -56,7 +60,7 @@
 	"query-builder-include-subclasses-tooltip": "Bao gồm các giá trị từ tập hợp con của giá trị được chọn. Ví dụ khi lọc theo “trường học → nằm trong phạm vi của khu vực hành chính → Hy Lạp”, cũng bao gồm “trường học → nằm trong… → Paris” trong kết quả. Việc đánh dấu hộp kiểm này có lẽ trả lại một danh sách kết quả đầy đủ hơn. Bỏ đánh dấu hộp kiểm nếu chỉ muốn xem các kết quả trùng khớp chính giá trị được chọn.",
 	"query-builder-negation-option-label-with": "Với",
 	"query-builder-negation-option-label-without": "Không có",
-	"query-builder-sharable-link-text": "Lấy liên kết để chia sẻ",
+	"query-builder-sharable-link-text": "Lấy liên kết đến truy vấn",
 	"query-builder-sharable-link-message": "Đã chép URL vào bảng tạm!",
 	"query-builder-quantity-value-error-number": "Xin hãy nhập con số",
 	"query-builder-quantity-value-error-unit": "Xin hãy chọn một đơn vị hợp lệ hoặc xóa giá trị",
