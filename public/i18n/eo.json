@@ -5,6 +5,7 @@
 			"Javiero",
 			"Robin van der Vliet",
 			"Spenĉjo",
+			"Tymewalk",
 			"Wierzbowski"
 		]
 	},
@@ -14,6 +15,9 @@
 	"query-builder-input-value-label": "Valoro",
 	"query-builder-input-value-placeholder": "Entajpu valoron",
 	"query-builder-item-value-lookup-no-match-found": "Neniu matĉo estis trovita",
+	"query-builder-lexeme-value-lookup-no-match-found": "Neniu matĉo estis trovita",
+	"query-builder-sense-value-lookup-no-match-found": "Neniu matĉo estis trovita",
+	"query-builder-form-value-lookup-no-match-found": "Neniu matĉo estis trovita",
 	"query-builder-property-lookup-label": "Atributo",
 	"query-builder-property-lookup-placeholder": "Entajpu econ",
 	"query-builder-property-lookup-no-match-found": "Neniu matĉo estis trovita",
