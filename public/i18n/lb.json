@@ -56,6 +56,8 @@
 	"query-builder-sharable-link-text": "Link op d'Requête kopéieren",
 	"query-builder-sharable-link-message": "URL an den Tëschespäicher kopéiert!",
 	"query-builder-quantity-value-error-number": "Gitt wgl. eng Zuel an",
+	"query-builder-quantity-value-error-unit": "Sicht wgl. eng gülteg Eenheet eraus oder huelt den Input ewech",
+	"query-builder-quantity-value-error-number-and-unit": "Gitt wgl. eng Zuel an a sicht eng gülteg Eenheet eraus oder huelt den Input ewech",
 	"query-builder-quantity-value-label": "Wäert an Eenheet (fakultativ)",
 	"query-builder-quantity-value-number-input-placeholder": "Gitt eng Zuel an",
 	"query-builder-quantity-value-unit-lookup-input-placeholder": "Eenheet aginn",
