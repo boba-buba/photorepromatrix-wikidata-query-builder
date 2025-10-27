@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Rarjinda",
+			"SaldırganSincap",
 			"Tejoebāsa"
 		]
 	},
@@ -13,14 +14,14 @@
 	"query-builder-find-all-items": "အိုင်တမ်းတိအားလုံးကို ရှာဖွီပါ",
 	"query-builder-run-query": "စုံစမ်းရှာဖွီမှုကို လုပ်ဆောင်ပါ။",
 	"query-builder-input-value-label": "တန်ဖိုး",
-	"query-builder-input-value-tooltip": "<em>တန်ဖိုး</em>အကွက်မှာ အကြောင်းအရာတစ်ခုဖော်ပြဖို့ အသုံးပြုသူစွာ ခိုင်မာရေအချက်အလက်ဟိပါရေ။ ဦပမာအနီနန့် အပြာရောင်\n\" ဖြစ်‌နိုင်စွာတစ်ခု em>တန်ဖိုး</em> အတွက် <em>property</em> \"အရောင်\"။",
+	"query-builder-input-value-tooltip": "<em>တန်ဖိုး</em>အကွက်မှာ အကြောင်းအရာတစ်ခုဖော်ပြဖို့ အသုံးပြုသူစွာ ခိုင်မာရေအချက်အလက်ဟိပါရေ။ ဦပမာအနီနန့် အပြာရောင်\n\" ဖြစ်‌နိုင်စွာတစ်ခု <em>တန်ဖိုး</em> အတွက် <em>property</em> \"အရောင်\"။",
 	"query-builder-input-value-placeholder": "တန်ဖိုးတစ်ခု ထည့်ပါ",
 	"query-builder-item-value-lookup-no-match-found": "တိုက်ဆိုင်မှုမတွိပါ",
 	"query-builder-lexeme-value-lookup-no-match-found": "ကိုက်ညီမှုမတွိပါ",
 	"query-builder-sense-value-lookup-no-match-found": "ကိုက်ညီမှုမတွိပါ",
 	"query-builder-form-value-lookup-no-match-found": "တိုက်ဆိုင်မှုမတွိပါ",
 	"query-builder-property-lookup-label": "ပါဝင်ရေအချက်လက်",
-	"query-builder-property-lookup-tooltip": "အခြီနီတစ်ခုဧ့<em>ပိုင်ဆိုင်မှု</em>အကွက်စွာ <em>တန်ဖိုး</em>အတွက် အမျိုးအစား ယင်းမဟုတ် ဖော်ပြချက် ဖြစ်ပါရေ။ ဥပမာအနီနန့် <အရောင်>စွာ <em>တန်ဖိုး</em> \"အပြာ\"အတွက် သင်အသုံးပြုချင်ရေ <er property</em>ဖြစ်ပါဖို့။",
+	"query-builder-property-lookup-tooltip": "အခြီနီတစ်ခုဧ့<em>ပိုင်ဆိုင်မှု</em>အကွက်စွာ <em>တန်ဖိုး</em>အတွက် အမျိုးအစား ယင်းမဟုတ် ဖော်ပြချက် ဖြစ်ပါရေ။ ဥပမာအနီနန့် <အရောင်>စွာ <em>တန်ဖိုး</em> \"အပြာ\"အတွက် သင်အသုံးပြုချင်ရေ <em> property</em>ဖြစ်ပါဖို့။",
 	"query-builder-property-lookup-placeholder": "ပစ္စည်းတစ်ခု ထည့်ပါ",
 	"query-builder-property-lookup-no-match-found": "တိုက်ဆိုင်မှုမတွိပါ",
 	"query-builder-property-lookup-limited-support-tag": "ကန့်သတ်ထောက်ပံ့မှု",

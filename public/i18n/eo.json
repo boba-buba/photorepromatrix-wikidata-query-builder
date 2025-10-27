@@ -9,6 +9,7 @@
 			"Wierzbowski"
 		]
 	},
+	"query-builder-intro-heading": "Pri ĉi tiu ilo",
 	"query-builder-query-heading": "Informpeto",
 	"query-builder-settings-heading": "Agordoj",
 	"query-builder-find-all-items": "Trovi ĉiujn erojn...",
@@ -49,7 +50,7 @@
 	"query-builder-footer-about-us": "Pri ni",
 	"query-builder-footer-privacy-policy": "Politiko pri privateco",
 	"query-builder-footer-wikimedia-deutchland": "Vikimedio Germanio",
-	"query-builder-footer-team": "Farita de la Vikidatumoj-teamo",
+	"query-builder-footer-team": "Farita per ❤️ de la [$1 Vikidatumo-teamo]",
 	"query-builder-date-input-value-label": "Valoro",
 	"query-builder-date-input-placeholder": "ekzemple 31-12-2020",
 	"query-builder-date-input-prompt-text": "Entajpu daton",
