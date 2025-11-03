@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Boro",
 			"Dj",
 			"Eukarióta",
 			"GBAB",
@@ -62,7 +63,7 @@
 	"query-builder-include-subclasses-tooltip": "A kiválasztott érték részhalmazainak értékeit is tartalmazza. Például az „iskola → közigazgatási területen → Görögország” tartalmazza az „iskola → …területen → Athén” eredményeit is. Ha bejelöli ezt a négyzetet, valószínűleg teljesebb találati listát kap. Akkor vegye ki a jelölőnégyzetet, ha csak a kiválasztott értékre vonatkozó pontos egyezéseket szeretné látni.",
 	"query-builder-negation-option-label-with": "Ezzel:",
 	"query-builder-negation-option-label-without": "E nélkül:",
-	"query-builder-sharable-link-text": "Megosztható hivatkozás lekérése",
+	"query-builder-sharable-link-text": "Link másolása a lekérdezéshez",
 	"query-builder-sharable-link-message": "URL a vágólapra másolva!",
 	"query-builder-quantity-value-error-number": "Írj be egy számot",
 	"query-builder-quantity-value-error-unit": "Kérjük, érvényes egységet jelöljön ki vagy távolítsa el a bevitelt",
