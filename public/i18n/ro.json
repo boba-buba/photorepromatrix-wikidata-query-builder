@@ -2,15 +2,20 @@
 	"@metadata": {
 		"authors": [
 			"KlaudiuMihaila",
+			"SZ475",
 			"WebSourceContentRO"
 		]
 	},
 	"query-builder-heading": "Asistent de interogări Wikidata",
+	"query-builder-intro-heading": "Despre acest instrument",
 	"query-builder-query-heading": "Interogare",
 	"query-builder-settings-heading": "Setări",
 	"query-builder-run-query": "Rulare interogare",
 	"query-builder-input-value-label": "Valoare",
+	"query-builder-input-value-placeholder": "Introduceți o valoare",
 	"query-builder-item-value-lookup-no-match-found": "Nu au fost găsite potriviri",
+	"query-builder-sense-value-lookup-no-match-found": "Nici-o potrivire găsită",
+	"query-builder-form-value-lookup-no-match-found": "Nici-o potrivire găsită",
 	"query-builder-property-lookup-label": "Proprietate",
 	"query-builder-property-lookup-no-match-found": "Nu au fost găsite potriviri",
 	"query-builder-result-header": "Rezultate",
@@ -35,5 +40,22 @@
 	"query-builder-condition-relation-toggle-or": "sau",
 	"query-builder-limit-number-error-message": "Limita trebuie să fie un număr.",
 	"query-builder-limit-number-results-description": "Limitați numărul de rezultate la",
-	"query-builder-limit-number-placeholder": "Introduceți un număr"
+	"query-builder-limit-number-placeholder": "Introduceți un număr",
+	"query-builder-negation-option-label-with": "Cu",
+	"query-builder-negation-option-label-without": "Fără",
+	"query-builder-sharable-link-message": "URL-ul a fost copiat în clipboard!",
+	"query-builder-quantity-value-number-input-placeholder": "Introduceți un număr",
+	"query-builder-quantity-value-unit-lookup-input-placeholder": "Introduceți o unitate",
+	"query-builder-quantity-value-unit-lookup-screenreader-label": "Unitate (opțional)",
+	"query-builder-footer-about-us": "Despre noi",
+	"query-builder-footer-privacy-policy": "Politica de Confidențialitate",
+	"query-builder-footer-team": "Făcut cu ❤️ de [echipa wikidata $1]",
+	"query-builder-footer-curious-facts": "Fapte curioase",
+	"query-builder-date-input-value-label": "Valoare",
+	"query-builder-date-input-placeholder": "de exemplu 31-12-2020",
+	"query-builder-date-input-prompt-text": "Vă rugăm introduceți o dată",
+	"query-builder-date-input-results-intro-text": "Va fi interpretat ca:",
+	"query-builder-language-selector-no-results": "Limba nu este disponibilă",
+	"query-builder-language-selector-options-menu-aria-label": "Limbi",
+	"query-builder-language-selector-mobile-header": "Selectare limbă"
 }
