@@ -16,7 +16,7 @@
 	"query-builder-item-value-lookup-no-match-found": "Ni chafwyd hyd i ddim yn cyfateb",
 	"query-builder-property-lookup-label": "Priodwedd",
 	"query-builder-result-header": "Canlyniadau",
-	"query-builder-result-error-missing-value": "Nodwch y gwerth",
+	"query-builder-result-error-missing-value": "Rhowch werth",
 	"query-builder-add-condition": "Ychwanegwch amod",
 	"query-builder-reference-relation-label": "Cyfeiriadau",
 	"query-builder-condition-relation-toggle-and": "a/ac",
