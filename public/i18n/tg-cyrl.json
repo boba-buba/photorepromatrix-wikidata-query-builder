@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Farorud"
+			"Farorud",
+			"ZulfiqorF"
 		]
 	},
 	"query-builder-heading": "Созандаи дархостҳои Викидода",
@@ -11,7 +12,7 @@
 	"query-builder-find-all-items": "Ёфтани тамоми элементҳо...",
 	"query-builder-run-query": "Иҷрои дархост",
 	"query-builder-input-value-label": "Қимат",
-	"query-builder-input-value-placeholder": "Қиматро ворид кунед",
+	"query-builder-input-value-placeholder": "Қиматеро ворид кунед",
 	"query-builder-item-value-lookup-no-match-found": "Мутобиқат пайдо нашуд",
 	"query-builder-lexeme-value-lookup-no-match-found": "Мутобиқат пайдо нашуд",
 	"query-builder-sense-value-lookup-no-match-found": "Мутобиқат пайдо нашуд",
@@ -20,7 +21,7 @@
 	"query-builder-property-lookup-placeholder": "Хусусиятро ворид кунед",
 	"query-builder-property-lookup-no-match-found": "Мутобиқат пайдо нашуд",
 	"query-builder-result-header": "натиҷаҳо",
-	"query-builder-result-error-missing-property": "Лутфан, хусусиятро интихоб кунед",
+	"query-builder-result-error-missing-property": "Лутфан,вижагиеро интихоб кунед",
 	"query-builder-result-error-missing-value": "Лутфан, қиматро ворид кунед",
 	"query-builder-add-condition": "Иловаи шарт",
 	"query-builder-value-type-relation-dropdown-matching": "мутобиқат",
@@ -36,8 +37,8 @@
 	"query-builder-delete-condition": "Ҳазфи шарт",
 	"query-builder-condition-relation-toggle-and": "ва",
 	"query-builder-condition-relation-toggle-or": "ё",
-	"query-builder-limit-number-placeholder": "Адад ворид кунед",
-	"query-builder-limit-number-screenreader-label": "Ҳадди аксари шумораи натиҷаҳо",
+	"query-builder-limit-number-placeholder": "Як адад ворид кунед",
+	"query-builder-limit-number-screenreader-label": "Ҳадди аксари теъдоди натиҷаҳо",
 	"query-builder-negation-option-label-with": "Ҳамроҳи",
 	"query-builder-negation-option-label-without": "Бидуни",
 	"query-builder-sharable-link-text": "Пайванд ба дархостро нусхабардорӣ кардан",
