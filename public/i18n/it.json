@@ -5,6 +5,7 @@
 			"Beta16",
 			"Costabile",
 			"EditGio",
+			"GseSro",
 			"Luca.favorido",
 			"Ontsed",
 			"Salvemm el lombard"
@@ -38,6 +39,7 @@
 	"query-builder-result-error-missing-property": "Seleziona una proprietà",
 	"query-builder-result-error-missing-value": "Inserisci un valore",
 	"query-builder-add-condition": "Aggiungi condizione",
+	"query-builder-value-type-label": "Relazione Valore-Proprietà",
 	"query-builder-value-type-relation-dropdown-matching": "con valore",
 	"query-builder-value-type-relation-dropdown-without": "senza",
 	"query-builder-value-type-relation-dropdown-regardless-of-value": "indipendentemente dal valore",
