@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Jordiventura96",
+			"L'Arpetani",
 			"Mguix",
 			"SMP",
 			"Vfc",
@@ -37,6 +38,7 @@
 	"query-builder-result-error-missing-property": "Si us plau, seleccioneu una propietat",
 	"query-builder-result-error-missing-value": "Introduïu un valor",
 	"query-builder-add-condition": "Afegiu una condició",
+	"query-builder-value-type-label": "Relació valor-propietat",
 	"query-builder-value-type-relation-dropdown-matching": "aparellant",
 	"query-builder-value-type-relation-dropdown-without": "sense",
 	"query-builder-value-type-relation-dropdown-regardless-of-value": "independentment del valor",
@@ -62,7 +64,7 @@
 	"query-builder-include-subclasses-tooltip": "Inclou els valors dels subconjunts del valor seleccionat. Per exemple, en filtrar «escola → situada a l'entitat territorial administrativa → Grècia», també s'inclou «escola → ubicada a ... → Atenes» als resultats. Si marqueu aquesta casella, probablement obtindreu una llista de resultats més completa. Desmarqueu-la si només voleu veure coincidències exactes per al valor seleccionat.",
 	"query-builder-negation-option-label-with": "amb",
 	"query-builder-negation-option-label-without": "sense",
-	"query-builder-sharable-link-text": "Obté un enllaç per compartir",
+	"query-builder-sharable-link-text": "Copia l'enllaç a la consulta",
 	"query-builder-sharable-link-message": "S'ha copiat l'enllaç al porta-retalls",
 	"query-builder-quantity-value-error-number": "Si us plau, introduïu un nombre",
 	"query-builder-quantity-value-error-unit": "Si us plau, seleccioneu una unitat vàlida o elimineu allò que heu afegit",

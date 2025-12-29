@@ -3,6 +3,7 @@
 		"authors": [
 			"Listz3",
 			"Sabelöga",
+			"Stefan2255",
 			"WikiPhoenix"
 		]
 	},
@@ -34,6 +35,7 @@
 	"query-builder-result-error-missing-property": "Välj en egenskap",
 	"query-builder-result-error-missing-value": "Ange ett värde",
 	"query-builder-add-condition": "Lägg till villkor",
+	"query-builder-value-type-label": "Förhållande mellan värde och egenskap",
 	"query-builder-value-type-relation-dropdown-matching": "matchar",
 	"query-builder-value-type-relation-dropdown-without": "utan",
 	"query-builder-value-type-relation-dropdown-regardless-of-value": "oavsett värde",
@@ -78,8 +80,10 @@
 	"query-builder-footer-wikimedia-deutchland": "Wikimedia Deutschland",
 	"query-builder-footer-team": "Skapad med ❤️ av [$1 Wikidata-teamet]",
 	"query-builder-footer-more-data-quality-tools": "Fler verktyg för datakvalitet",
+	"query-builder-footer-mismatch-finder": "Avvikelseidentifierare",
 	"query-builder-footer-item-quality-evaluator": "Objektkvalitetsutvärderare",
 	"query-builder-footer-curious-facts": "Kul fakta",
+	"query-builder-footer-constraints-violation-checker": "Begränsningsöversträdelsekontrollör",
 	"query-builder-date-input-value-label": "Värde",
 	"query-builder-date-input-placeholder": "till exempel 31-12-2020",
 	"query-builder-date-input-prompt-text": "Ange ett datum",
