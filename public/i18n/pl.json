@@ -5,7 +5,8 @@
 			"Czupirek",
 			"Luku123",
 			"Matlin",
-			"Rail"
+			"Rail",
+			"Woytecr"
 		]
 	},
 	"query-builder-heading": "Kreator zapytań Wikidanych",
@@ -61,7 +62,7 @@
 	"query-builder-include-subclasses-tooltip": "Zawiera wartości z podzbiorów wybranej wartości, np. przy filtrowaniu po „szkoła → zlokalizowana w jednostce terytorialnej administracyjnej → Grecja”, uwzględnia również w wynikach „szkoła → zlokalizowana w... → Ateny”. Zaznaczenie tego pola prawdopodobnie spowoduje wyświetlenie pełniejszej listy wyników. Usuń zaznaczenie, jeśli chcesz zobaczyć tylko dokładne dopasowania dla wybranej wartości.",
 	"query-builder-negation-option-label-with": "Z",
 	"query-builder-negation-option-label-without": "Bez",
-	"query-builder-sharable-link-text": "Uzyskaj link do udostępnienia",
+	"query-builder-sharable-link-text": "Kopiuj link do zapytania",
 	"query-builder-sharable-link-message": "Adres URL skopiowany do schowka!",
 	"query-builder-quantity-value-error-number": "Proszę wprowadzić liczbę",
 	"query-builder-quantity-value-error-unit": "Wybierz prawidłową jednostkę lub usuń wprowadzone dane",
@@ -78,7 +79,7 @@
 	"query-builder-footer-about-us": "O nas",
 	"query-builder-footer-privacy-policy": "Polityka prywatności",
 	"query-builder-footer-wikimedia-deutchland": "Wikimedia Deutschland",
-	"query-builder-footer-team": "Stworzone z ❤️ przez [$1 Zespół wikadanych]",
+	"query-builder-footer-team": "Stworzone z ❤️ przez [$1 Zespół ds. Wikidanych]",
 	"query-builder-footer-more-data-quality-tools": "Więcej narzędzi do zapewnienia jakości danych",
 	"query-builder-footer-mismatch-finder": "Wyszukiwarka niezgodności",
 	"query-builder-footer-curious-facts": "Ciekawe fakty",
