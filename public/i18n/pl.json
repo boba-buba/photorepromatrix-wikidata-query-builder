@@ -92,5 +92,6 @@
 	"query-builder-language-selector-no-results": "Język nie jest dostępny",
 	"query-builder-language-selector-options-menu-aria-label": "Języki",
 	"query-builder-language-selector-clear-button-label": "Wyczyść pole wprowadzania",
-	"query-builder-language-selector-mobile-header": "Wybierz język"
+	"query-builder-language-selector-mobile-header": "Wybierz język",
+	"query-builder-language-selector-close-button-label": "Zamknij wybór języka"
 }

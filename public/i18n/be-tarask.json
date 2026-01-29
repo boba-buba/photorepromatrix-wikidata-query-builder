@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Renessaince"
+			"Renessaince",
+			"Ucukor"
 		]
 	},
 	"query-builder-heading": "Канструктар запытаў Вікізьвестак",
@@ -28,7 +29,7 @@
 	"query-builder-result-placeholder": "Вынікі будуць паказаныя тут",
 	"query-builder-result-header": "Вынікі",
 	"query-builder-result-error-empty-form": "Выглядае, што Канструктар запытаў быў пусты. Калі ласка, перш увядзіце слушны запыт, тады паспрабуйце запусьціць зноў.",
-	"query-builder-result-error-incomplete-form": "Адно ці некалькі палёў пустыя ці маюць нераспазнаны зьмест. Калі ласка, выпраўце ўсе праблемы і паспрабуйце зноў.",
+	"query-builder-result-error-incomplete-form": "Адно ці колькі палёў пустыя ці маюць нераспазнаны зьмест. Калі ласка, разьвяжыце ўсе праблемы і паспрабуйце зноў.",
 	"query-builder-result-error-missing-property": "Абярыце ўласьцівасьць, калі ласка",
 	"query-builder-result-error-missing-value": "Увядзіце значэньне, калі ласка",
 	"query-builder-add-condition": "Дадаць умову",
