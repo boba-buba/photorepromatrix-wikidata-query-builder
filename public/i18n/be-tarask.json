@@ -33,7 +33,7 @@
 	"query-builder-result-error-missing-property": "Абярыце ўласьцівасьць, калі ласка",
 	"query-builder-result-error-missing-value": "Увядзіце значэньне, калі ласка",
 	"query-builder-add-condition": "Дадаць умову",
-	"query-builder-value-type-label": "Сувязь значэньня з уласьцівасьцю",
+	"query-builder-value-type-label": "Зьвязак значэньня з уласьцівасьцю",
 	"query-builder-value-type-relation-dropdown-matching": "супадае з",
 	"query-builder-value-type-relation-dropdown-without": "без",
 	"query-builder-value-type-relation-dropdown-regardless-of-value": "незалежна ад значэньня",
