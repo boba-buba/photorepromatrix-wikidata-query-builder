@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Letra.berdi",
 			"ObaTango"
 		]
 	},
 	"query-builder-heading": "Formuladó di konsulta di Wikidata",
 	"query-builder-query-heading": "Konsulta",
 	"query-builder-settings-heading": "Konfigurashon",
-	"query-builder-find-all-items": "Buska tur elemento",
+	"query-builder-find-all-items": "Nkontra tudu ilimentus",
 	"query-builder-run-query": "Ehekutá e konsulta.",
 	"query-builder-input-value-label": "Balor",
 	"query-builder-input-value-placeholder": "Yena un balor",

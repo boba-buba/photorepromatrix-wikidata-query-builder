@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Blackisnewyellow",
-			"Ерней"
+			"Ерней",
+			"Ильгиз"
 		]
 	},
 	"query-builder-heading": "Викимәгълүмат өчен сорашу төзүче корал",
@@ -85,7 +86,7 @@
 	"query-builder-date-input-prompt-text": "Дата кертегез әле",
 	"query-builder-date-input-results-intro-text": "Ничек итеп аңлатылыр:",
 	"query-builder-date-input-calendar-notice-text": "Бөтен даталар григориан календарь даталары итеп санала",
-	"query-builder-language-selector-input-placeholder": "Телне сайларга",
+	"query-builder-language-selector-input-placeholder": "Телне сайлау",
 	"query-builder-language-selector-no-results": "Тел сайлаулы түгел",
 	"query-builder-language-selector-options-menu-aria-label": "Телләр",
 	"query-builder-language-selector-clear-button-label": "Кертү кырын чистартырга",
