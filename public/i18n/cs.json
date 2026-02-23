@@ -87,6 +87,7 @@
 	"query-builder-footer-mismatch-finder": "Vyhledávač neshod",
 	"query-builder-footer-item-quality-evaluator": "Hodnotitel kvality položek",
 	"query-builder-footer-curious-facts": "Zajímavá fakta",
+	"query-builder-footer-constraints-violation-checker": "Kontrola porušení omezení",
 	"query-builder-date-input-value-label": "Hodnota",
 	"query-builder-date-input-placeholder": "například 31-12-2020",
 	"query-builder-date-input-prompt-text": "Zadejte prosím datum",
