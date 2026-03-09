@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ella Lachow",
+			"Malaalaa"
+		]
+	},
+	"query-builder-query-heading": "Oyshaa",
+	"query-builder-settings-heading": "Giigissota",
+	"query-builder-property-lookup-no-match-found": "Gayttiyabi beettibeena",
+	"query-builder-result-header": "Ayfeta",
+	"query-builder-add-condition": "Hanotaa gujja",
+	"query-builder-value-type-relation-dropdown-less-than-quantity": "guuxxees",
+	"query-builder-value-type-relation-dropdown-more-than-quantity": "darees",
+	"query-builder-value-type-relation-dropdown-less-than-date": "kase",
+	"query-builder-value-type-relation-dropdown-more-than-date": "simmidi",
+	"query-builder-reference-relation-label": "Naqaashata",
+	"query-builder-reference-relation-dropdown-with": "naqaashatuura de'iyageetu xallaa",
+	"query-builder-reference-relation-dropdown-without": "naqaashati baynnaageetu xallaa",
+	"query-builder-reference-relation-dropdown-regardless": "naqaashatuura de'iyageetanne naqaashati baynnaageeta",
+	"query-builder-delete-condition": "hanotaa qucca",
+	"query-builder-condition-relation-toggle-and": "nne",
+	"query-builder-condition-relation-toggle-or": "woykko",
+	"query-builder-limit-number-placeholder": "Payduwa gelissa",
+	"query-builder-negation-option-label-with": "-ra",
+	"query-builder-negation-option-label-without": "Baynnan",
+	"query-builder-sharable-link-text": "Koyyanaassi gattiyagaa duuqqa",
+	"query-builder-sharable-link-message": "URLee kiliipboorddiyan duuqettiis.",
+	"query-builder-quantity-value-error-number": "Hayyanaa payduwa gelissa",
+	"query-builder-quantity-value-number-input-placeholder": "Payduwa gelissa",
+	"query-builder-footer-about-us": "Nubaa",
+	"query-builder-footer-privacy-policy": "Buzo Polisiya",
+	"query-builder-date-input-prompt-text": "Hayyanaa gallassaa gelissa",
+	"query-builder-language-selector-input-placeholder": "Doonata koyya",
+	"query-builder-language-selector-no-results": "Doonay de'enna",
+	"query-builder-language-selector-options-menu-aria-label": "Doonata",
+	"query-builder-language-selector-mobile-header": "Doonaa doora",
+	"query-builder-language-selector-close-button-label": "Doonaa dooriyosaa gordda"
+}
