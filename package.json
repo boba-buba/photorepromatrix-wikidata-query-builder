@@ -40,7 +40,7 @@
     "ress": "^5.0.2",
     "sparqljs": "^3.7.1",
     "vite-plugin-importer": "^0.2.5",
-    "vue": "^3.5.13",
+    "vue": "^3.5.30",
     "vue-banana-i18n": "2.3.0"
   },
   "devDependencies": {
