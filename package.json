@@ -36,7 +36,7 @@
     "core-js": "^3.37.1",
     "lodash.debounce": "^4.0.8",
     "lodash.isequal": "^4.5.0",
-    "pinia": "^2.2.0",
+    "pinia": "^3.0.4",
     "ress": "^5.0.2",
     "sparqljs": "^3.7.1",
     "vite-plugin-importer": "^0.2.5",
