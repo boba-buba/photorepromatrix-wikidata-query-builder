@@ -99,5 +99,10 @@
 	"query-builder-language-selector-clear-button-label": "Vymazat vstupní pole",
 	"query-builder-language-selector-mobile-header": "Vyberte jazyk",
 	"query-builder-language-selector-close-button-label": "Zavřít výběr jazyka",
-	"query-builder-toggle-language-selector-button": "Přepnout výběr jazyka"
+	"query-builder-toggle-language-selector-button": "Přepnout výběr jazyka",
+	"query-builder-monolingualtext-text-label": "Text",
+	"query-builder-monolingualtext-text-placeholder": "Zadejte text",
+	"query-builder-monolingualtext-language-label": "Jazyk",
+	"query-builder-monolingualtext-language-lookup-no-match-found": "Nebyla nalezena žádná shoda",
+	"query-builder-monolingualtext-error-missing-language": "Prosím, vyberte jazyk"
 }

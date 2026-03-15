@@ -101,5 +101,10 @@
 	"query-builder-language-selector-clear-button-label": "Eingabefeld löschen",
 	"query-builder-language-selector-mobile-header": "Wähle eine Sprache",
 	"query-builder-language-selector-close-button-label": "Sprachauswahl schließen",
-	"query-builder-toggle-language-selector-button": "Sprachauswahl umschalten"
+	"query-builder-toggle-language-selector-button": "Sprachauswahl umschalten",
+	"query-builder-monolingualtext-text-label": "Text",
+	"query-builder-monolingualtext-text-placeholder": "Text eingeben",
+	"query-builder-monolingualtext-language-label": "Sprache",
+	"query-builder-monolingualtext-language-lookup-no-match-found": "Keine Übereinstimmung gefunden",
+	"query-builder-monolingualtext-error-missing-language": "Bitte wählen Sie eine Sprache"
 }

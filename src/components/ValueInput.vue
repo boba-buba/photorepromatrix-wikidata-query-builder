@@ -14,6 +14,7 @@ import EntityValueLookup from '@/components/EntityValueLookup.vue';
 import StringValueInput from '@/components/StringValueInput.vue';
 import QuantityValueInput from '@/components/QuantityValueInput.vue';
 import DateValueInput from '@/components/DateValueInput.vue';
+import MonolingualTextValueInput from '@/components/MonolingualTextValueInput.vue';
 
 import { defineComponent } from 'vue';
 
@@ -24,6 +25,7 @@ export default defineComponent( {
 		EntityValueLookup,
 		QuantityValueInput,
 		DateValueInput,
+		MonolingualTextValueInput,
 	},
 	props: {
 		datatype: {
@@ -59,6 +61,8 @@ export default defineComponent( {
 					return 'QuantityValueInput';
 				case 'time':
 					return 'DateValueInput';
+				case 'monolingualtext':
+					return 'MonolingualTextValueInput';
 				case 'string':
 				case 'external-id':
 				case 'url':

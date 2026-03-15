@@ -99,5 +99,10 @@
 	"query-builder-language-selector-clear-button-label": "Effacer le champ de saisie",
 	"query-builder-language-selector-mobile-header": "Sélectionner une langue",
 	"query-builder-language-selector-close-button-label": "Fermer le sélecteur de langue",
-	"query-builder-toggle-language-selector-button": "Basculer le sélecteur de langue"
+	"query-builder-toggle-language-selector-button": "Basculer le sélecteur de langue",
+	"query-builder-monolingualtext-text-label": "Texte",
+	"query-builder-monolingualtext-text-placeholder": "Entrez du texte",
+	"query-builder-monolingualtext-language-label": "Langue",
+	"query-builder-monolingualtext-language-lookup-no-match-found": "Aucune correspondance trouvée",
+	"query-builder-monolingualtext-error-missing-language": "Veuillez sélectionner une langue"
 }

@@ -87,5 +87,10 @@
   "query-builder-language-selector-clear-button-label": "Clear input field",
   "query-builder-language-selector-mobile-header": "Select a language",
   "query-builder-language-selector-close-button-label": "Close Language Selector",
-  "query-builder-toggle-language-selector-button": "Toggle Language Selector"
+  "query-builder-toggle-language-selector-button": "Toggle Language Selector",
+  "query-builder-monolingualtext-text-label": "Text",
+  "query-builder-monolingualtext-text-placeholder": "Enter text",
+  "query-builder-monolingualtext-language-label": "Language",
+  "query-builder-monolingualtext-language-lookup-no-match-found": "No match was found",
+  "query-builder-monolingualtext-error-missing-language": "Please select a language"
 }

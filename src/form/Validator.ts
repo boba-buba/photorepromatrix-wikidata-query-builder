@@ -6,6 +6,7 @@ import QueryBuilderError from '@/data-model/QueryBuilderError';
 import DateValidator from '@/form/DateValidator';
 import QuantityValidator from '@/form/QuantityValidator';
 import { DateValue, QuantityValue, Value } from '@/store/RootState';
+import MonolingualTextValidator, { MonolingualTextValue } from './MonolingualTextValidator';
 
 export interface ValidationResult {
 	formErrors: QueryBuilderError[];
@@ -90,6 +91,8 @@ export default class Validator {
 				return ( new DateValidator() ).validateValue( value as DateValue );
 			case 'quantity':
 				return ( new QuantityValidator() ).validateQuantityValue( value as QuantityValue );
+			case 'monolingualtext':
+  				return new MonolingualTextValidator().validateValue(value as MonolingualTextValue);
 			default:
 				return ( new BaseValidator() ).validateValue( value );
 		}

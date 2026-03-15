@@ -3,6 +3,7 @@ import PropertyValueRelation from '@/data-model/PropertyValueRelation';
 import ConditionRelation from '@/data-model/ConditionRelation';
 import ReferenceRelation from '@/data-model/ReferenceRelation';
 import ParseResult from '@/data-access/ParseResult';
+import Language from '@/data-model/Language';
 
 export const DEFAULT_LIMIT = 100;
 
@@ -45,8 +46,13 @@ export interface DateValue {
 	formattedValue: string | null;
 }
 
+interface MonolingualTextValue {
+  text: string;
+  language: Language | null; // { code: string, autonym: string }
+}
+
 export type Value = ItemValue | LexemeValue | SenseValue | FormValue | PropertyValue |
-StringValue | QuantityValue | DateValue | null;
+StringValue | QuantityValue | DateValue | MonolingualTextValue | null;
 
 export interface PropertyData {
 	id: string;

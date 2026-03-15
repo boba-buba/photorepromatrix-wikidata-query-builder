@@ -9,6 +9,7 @@ import RootState, {
 	PropertyValue,
 } from '@/store/RootState';
 import SerializedObject, { SerializedValue } from '@/data-model/SerializedObject';
+import { MonolingualTextValue } from '@/form/MonolingualTextValidator';
 
 export default class QuerySerializer {
 	public serialize( state: RootState ): string {
@@ -53,6 +54,13 @@ export default class QuerySerializer {
 		}
 		if ( condition.propertyData.datatype === 'wikibase-property' ) {
 			return ( condition.valueData.value as PropertyValue ).id;
+		}
+		if (condition.propertyData.datatype === 'monolingualtext') {
+			const mlValue = condition.valueData.value as MonolingualTextValue;
+			return {
+				text: mlValue.text,
+				language: mlValue.language?.code || null
+			};
 		}
 		if ( condition.propertyData.datatype === 'quantity' ) {
 			const quantityValue: QuantityValue = condition.valueData.value as QuantityValue;

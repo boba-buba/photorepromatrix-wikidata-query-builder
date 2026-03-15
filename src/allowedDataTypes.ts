@@ -17,8 +17,8 @@ const allowedDataTypes = [
 	'math',
 	'musical-notation',
 	'globe-coordinate',
+	*/
 	'monolingualtext',
-    */
 ];
 
 export default allowedDataTypes;

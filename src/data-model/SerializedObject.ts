@@ -12,7 +12,12 @@ export interface SerializedDateValue {
 	precision: number;
 }
 
-export type SerializedValue = string | SerializedQuantityValue | SerializedDateValue;
+export interface SerializedMonolingualTextValue {
+	text: string;
+	language: string | null;
+}
+
+export type SerializedValue = string | SerializedQuantityValue | SerializedDateValue | SerializedMonolingualTextValue;
 
 export default interface SerializedCondition {
 	propertyId: string;

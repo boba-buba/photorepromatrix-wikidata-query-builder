@@ -1,7 +1,8 @@
 import DeserializationError from '@/serialization/DeserializationError';
 import RootState, { ConditionRow, PropertyData, Value } from '@/store/RootState';
 import SerializedCondition, { SerializedQuantityValue,
-	SerializedDateValue, SerializedValue } from '@/data-model/SerializedObject';
+	SerializedDateValue, SerializedMonolingualTextValue, SerializedValue } from '@/data-model/SerializedObject';
+import languageData from '@wikimedia/language-data';
 
 export default class QueryDeserializer {
 	public deserialize( queryString: string ): RootState {
@@ -87,6 +88,16 @@ export default class QueryDeserializer {
 				precision: condition.value.precision,
 			};
 		}
+		if ( this.isMonolingualTextValue( condition, condition.value ) ) {
+			const autonyms = languageData.getAutonyms();
+			return {
+				text: condition.value.text,
+				language: condition.value.language ? {
+					code: condition.value.language,
+					autonym: autonyms[ condition.value.language ] || condition.value.language,
+				} : null,
+			};
+		}
 		if ( condition.propertyDataType === 'wikibase-item' ) {
 			return {
 				id: condition.value,
@@ -104,5 +115,10 @@ export default class QueryDeserializer {
 	private isDateValue( condition: SerializedCondition, _conditionValue: SerializedValue ):
 		_conditionValue is SerializedDateValue {
 		return condition.propertyDataType === 'time';
+	}
+
+	private isMonolingualTextValue( condition: SerializedCondition, _conditionValue: SerializedValue ):
+		_conditionValue is SerializedMonolingualTextValue {
+		return condition.propertyDataType === 'monolingualtext';
 	}
 }

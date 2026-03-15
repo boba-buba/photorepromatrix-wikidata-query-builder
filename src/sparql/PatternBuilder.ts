@@ -1,6 +1,7 @@
 import DateValuePatternBuilder from '@/sparql/DateValuePatternBuilder';
 import EntityValueBuilder from '@/sparql/EntityValueBuilder';
 import LimitedSupportPatternBuilder from '@/sparql/LimitedSupportPatternBuilder';
+import MonolingualTextValuePatternBuilder from '@/sparql/MonolingualTextValuePatternBuilder';
 import QuantityValuePatternBuilder from '@/sparql/QuantityValuePatternBuilder';
 import { Condition } from '@/sparql/QueryRepresentation';
 import StringValuePatternBuilder from '@/sparql/StringValuePatternBuilder';
@@ -40,6 +41,8 @@ export default class PatternBuilder implements ValuePatternBuilder {
 				return new QuantityValuePatternBuilder();
 			case 'time':
 				return new DateValuePatternBuilder();
+			case 'monolingualtext':
+				return new MonolingualTextValuePatternBuilder();
 			default:
 				return new LimitedSupportPatternBuilder();
 		}
