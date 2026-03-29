@@ -22,6 +22,7 @@
 			@escape="onCloseMenu"
 		/>
 		<LanguageSelectorOptionsMenu
+			v-if="isOptionsMenuVisible"
 			tabindex="-1"
 			:languages="shownLanguages"
 			:highlighted-index="highlightedIndex"
@@ -49,6 +50,15 @@ const searchInput: Ref<string> = ref( '' );
 const highlightedIndex: Ref<number> = ref( -1 );
 const closeUrl = ref( closeUrlSvg );
 const apiLanguageCodes = ref( [ '' ] );
+const isOptionsMenuVisible = ref( true );
+
+interface Props {
+	autoCloseOnSelect?: boolean;
+}
+
+const props = withDefaults( defineProps<Props>(), {
+	autoCloseOnSelect: false,
+} );
 
 const input = ref<InstanceType<typeof LanguageSelectorInput> | null>( null );
 
@@ -87,6 +97,7 @@ const debouncedApiLanguageSearch = debounce( async ( debouncedInputValue: string
 
 function onInput( searchedLanguage: string ): void {
 	searchInput.value = searchedLanguage;
+	isOptionsMenuVisible.value = true;
 	if ( searchInput.value ) {
 		debouncedApiLanguageSearch( searchInput.value );
 	}
@@ -96,10 +107,15 @@ function onInput( searchedLanguage: string ): void {
 
 function onSelect( languageCode: string ): void {
 	emit( 'select', languageCode );
+	if ( props.autoCloseOnSelect ) {
+		isOptionsMenuVisible.value = false;
+		emit( 'close' );
+	}
 }
 
 function onClearInputValue(): void {
 	searchInput.value = '';
+	isOptionsMenuVisible.value = true;
 }
 
 function onCloseMenu(): void {
@@ -111,15 +127,26 @@ function focus(): void {
 }
 
 function onArrowDown(): void {
+	isOptionsMenuVisible.value = true;
+	if ( shownLanguages.value.length === 0 ) {
+		return;
+	}
 	highlightedIndex.value = ( highlightedIndex.value + 1 ) % shownLanguages.value.length;
 }
 
 function onArrowUp(): void {
+	isOptionsMenuVisible.value = true;
 	const length = shownLanguages.value.length;
+	if ( length === 0 ) {
+		return;
+	}
 	highlightedIndex.value = ( highlightedIndex.value + length - 1 ) % length;
 }
 
 function onEnter(): void {
+	if ( shownLanguages.value.length === 0 ) {
+		return;
+	}
 	onSelect( shownLanguages.value[ highlightedIndex.value ].code );
 }
 

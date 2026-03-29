@@ -4,6 +4,10 @@ export enum BasePropertyValueRelation {
 	Regardless = 'regardless-of-value',
 }
 
+export enum TextPropertyValueRelation {
+	Contains = 'contains',
+}
+
 export enum RangePropertyValueRelation {
 	LessThan = 'less-than',
 	MoreThan = 'more-than',
@@ -11,9 +15,13 @@ export enum RangePropertyValueRelation {
 
 const PropertyValueRelation = {
 	...BasePropertyValueRelation,
+	...TextPropertyValueRelation,
 	...RangePropertyValueRelation,
 };
 
-type PropertyValueRelation = BasePropertyValueRelation | RangePropertyValueRelation;
+type PropertyValueRelation =
+	BasePropertyValueRelation |
+	TextPropertyValueRelation |
+	RangePropertyValueRelation;
 
 export default PropertyValueRelation;

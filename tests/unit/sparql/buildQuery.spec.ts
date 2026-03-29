@@ -166,6 +166,27 @@ describe( 'buildQuery', () => {
 		expect( receivedQuery.replace( /\s+/g, ' ' ) ).toEqual( expectedQuery.replace( /\s+/g, ' ' ) );
 	} );
 
+	it( 'builds a query from a property and a string value with contains selected', () => {
+		const propertyId = 'P666';
+		const value = 'blah';
+		const condition = getSimpleCondition( propertyId, value );
+		condition.propertyValueRelation = PropertyValueRelation.Contains;
+
+		const expectedQuery =
+			`SELECT DISTINCT ?item WHERE {
+			?item p:${propertyId} ?statement0.
+			?statement0 (ps:${propertyId}) ?containsValue0.
+			FILTER(CONTAINS(LCASE(STR(?containsValue0)), LCASE("${value}")))
+			}`;
+
+		const receivedQuery = buildQuery( {
+			conditions: [ condition ],
+			omitLabels: true,
+		} );
+
+		expect( receivedQuery.replace( /\s+/g, ' ' ) ).toEqual( expectedQuery.replace( /\s+/g, ' ' ) );
+	} );
+
 	it( 'builds a query from a property with "any value" selected', () => {
 		const propertyId = 'P666';
 		const condition = getSimpleCondition( propertyId, '' );
@@ -175,6 +196,26 @@ describe( 'buildQuery', () => {
 				?item p:${propertyId} ?statement0.
 				?statement0 (ps:${propertyId}) _:anyValue${propertyId}.
 			}`;
+		const actualQuery = buildQuery( {
+			conditions: [ condition ],
+			omitLabels: true,
+		} );
+
+		expect( actualQuery.replace( /\s+/g, ' ' ) ).toEqual( expectedQuery.replace( /\s+/g, ' ' ) );
+	} );
+
+	it( 'builds a monolingual query from a property with "any value" selected', () => {
+		const propertyId = 'P1476';
+		const condition = getSimpleCondition( propertyId, '' );
+		condition.datatype = 'monolingualtext';
+		condition.propertyValueRelation = PropertyValueRelation.Regardless;
+
+		const expectedQuery =
+			`SELECT DISTINCT ?item WHERE {
+				?item p:${propertyId} ?statement0.
+				?statement0 (ps:${propertyId}) _:anyValue${propertyId}.
+			}`;
+
 		const actualQuery = buildQuery( {
 			conditions: [ condition ],
 			omitLabels: true,

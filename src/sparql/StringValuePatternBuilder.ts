@@ -4,7 +4,7 @@ import rdfNamespaces from '@/sparql/rdfNamespaces';
 import SyntaxBuilder from '@/sparql/SyntaxBuilder';
 import TripleBuilder from '@/sparql/TripleBuilder';
 import ValuePatternBuilder from '@/sparql/ValuePatternBuilder';
-import { MinusPattern, Pattern, Term } from 'sparqljs';
+import { FilterPattern, MinusPattern, OperationExpression, Pattern, Term, VariableTerm } from 'sparqljs';
 
 type StringTermType = 'NamedNode' | 'Literal';
 
@@ -51,7 +51,7 @@ export default class StringValuePatternBuilder implements ValuePatternBuilder {
 		const statementToValueTriple = this.syntaxBuilder.buildPathTriple(
 			statementVariable,
 			[ rdfNamespaces.ps + propertyId ],
-			this.buildObjectItems( propertyId, propertyValueRelation, value, repeatingPropertyIndex, objectTermType ),
+			this.buildObjectItems( propertyId, propertyValueRelation, value, repeatingPropertyIndex, conditionIndex, objectTermType ),
 		);
 		const entityValuePattern = this.syntaxBuilder.buildBgpPattern( [
 			entityToStatementTriple,
@@ -80,7 +80,54 @@ export default class StringValuePatternBuilder implements ValuePatternBuilder {
 			patterns.push( notMatchingPattern );
 		}
 
+		if ( propertyValueRelation === PropertyValueRelation.Contains ) {
+			patterns.push( this.buildContainsPattern( value, conditionIndex ) );
+		}
+
 		return patterns;
+	}
+
+	private buildContainsPattern( value: string, conditionIndex: number ): FilterPattern {
+		const valueVariable = this.buildContainsVariableTerm( conditionIndex );
+
+		const valueAsStringExpression: OperationExpression = {
+			type: 'operation',
+			operator: 'str',
+			args: [ valueVariable ],
+		};
+
+		const loweredStatementValueExpression: OperationExpression = {
+			type: 'operation',
+			operator: 'lcase',
+			args: [ valueAsStringExpression ],
+		};
+
+		const loweredUserValueExpression: OperationExpression = {
+			type: 'operation',
+			operator: 'lcase',
+			args: [
+				{
+					termType: 'Literal',
+					value,
+				},
+			],
+		};
+
+		return {
+			type: 'filter',
+			expression: {
+				type: 'operation',
+				operator: 'contains',
+				args: [ loweredStatementValueExpression, loweredUserValueExpression ],
+			},
+		};
+	}
+
+	private buildContainsVariableTerm( conditionIndex: number ): VariableTerm {
+		return {
+			termType: 'Variable',
+			value: `containsValue${conditionIndex}`,
+		};
 	}
 
 	private buildNotMatchingPattern(
@@ -113,9 +160,12 @@ export default class StringValuePatternBuilder implements ValuePatternBuilder {
 		propertyValueRelation: PropertyValueRelation,
 		value: string,
 		propertyIndex: string,
+		conditionIndex: number,
 		objectTermType: StringTermType,
 	): Term {
 		switch ( propertyValueRelation ) {
+			case ( PropertyValueRelation.Contains ):
+				return this.buildContainsVariableTerm( conditionIndex );
 			case ( PropertyValueRelation.NotMatching ):
 				return {
 					termType: 'Variable',

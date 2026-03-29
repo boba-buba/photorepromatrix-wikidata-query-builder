@@ -22,6 +22,7 @@ import { defineComponent } from 'vue';
 import PropertyValueRelation, {
 	BasePropertyValueRelation,
 	RangePropertyValueRelation,
+	TextPropertyValueRelation,
 } from '@/data-model/PropertyValueRelation';
 import { CdxField, CdxSelect } from '@wikimedia/codex';
 
@@ -73,6 +74,22 @@ export default defineComponent( {
 					};
 				},
 			);
+
+			if ( [ 'string', 'external-id', 'url', 'monolingualtext' ].includes( this.datatype ) ) {
+				relationOptions.push( ...Object.values( TextPropertyValueRelation ).map(
+					( value: TextPropertyValueRelation ) => {
+						return {
+							/*
+							* Values that can be used here:
+							* query-builder-value-type-relation-dropdown-contains
+							*/
+							label: this.$i18n( `query-builder-value-type-relation-dropdown-${value}` ),
+							description: '',
+							value,
+						};
+					},
+				) );
+			}
 
 			if ( this.datatype === 'quantity' ) {
 				relationOptions.push( ...Object.values( RangePropertyValueRelation ).map(

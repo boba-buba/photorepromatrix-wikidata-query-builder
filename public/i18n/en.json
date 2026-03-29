@@ -31,6 +31,7 @@
   "query-builder-value-type-relation-dropdown-matching": "matching",
   "query-builder-value-type-relation-dropdown-without": "without",
   "query-builder-value-type-relation-dropdown-regardless-of-value": "regardless of value",
+  "query-builder-value-type-relation-dropdown-contains": "contains",
   "query-builder-value-type-relation-dropdown-less-than-quantity": "less than",
   "query-builder-value-type-relation-dropdown-more-than-quantity": "more than",
   "query-builder-value-type-relation-dropdown-less-than-date": "before",

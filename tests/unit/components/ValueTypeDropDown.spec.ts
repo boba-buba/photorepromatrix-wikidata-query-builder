@@ -42,7 +42,7 @@ describe( 'ValueTypeDropDown.vue', () => {
 		expect( wrapper.findComponent( CdxSelect ).props( 'disabled' ) ).toBe( true );
 	} );
 
-	it( 'contains the base three options for datatype string', () => {
+	it( 'contains the base three and contains option for datatype string', () => {
 		const wrapper = mount( ValueTypeDropDown, {
 			global: {
 				plugins: [ i18n ],
@@ -59,7 +59,27 @@ describe( 'ValueTypeDropDown.vue', () => {
 				( value as MenuItemData ).value,
 		);
 
-		expect( optionValues ).toStrictEqual( [ 'matching', 'without', 'regardless-of-value' ] );
+		expect( optionValues ).toStrictEqual( [ 'matching', 'without', 'regardless-of-value', 'contains' ] );
+	} );
+
+	it( 'contains the base three and contains option for datatype monolingualtext', () => {
+		const wrapper = mount( ValueTypeDropDown, {
+			global: {
+				plugins: [ i18n ],
+			},
+			props: {
+				modelValue: PropertyValueRelation.Matching,
+				datatype: 'monolingualtext',
+				disabled: true,
+			},
+		} );
+
+		const optionValues = wrapper.findComponent( CdxSelect ).props( 'menuItems' ).map(
+			( value: MenuItemData | MenuGroupData ) =>
+				( value as MenuItemData ).value,
+		);
+
+		expect( optionValues ).toStrictEqual( [ 'matching', 'without', 'regardless-of-value', 'contains' ] );
 	} );
 
 	it( 'contains the base three and two range options for datatype quantity', () => {

@@ -23,6 +23,7 @@
 
 		<LanguageSelector
 			:disabled="disabled"
+			auto-close-on-select
 			@select="onLanguageSelect"
 			@close="onLanguageSelectorClose"
 		>
