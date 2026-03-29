@@ -22,6 +22,7 @@
 		</CdxField>
 
 		<LanguageSelector
+			v-if="isLanguageSelectorVisible"
 			:disabled="disabled"
 			auto-close-on-select
 			@select="onLanguageSelect"
@@ -78,6 +79,7 @@ export default defineComponent( {
 		return {
 			textValue: this.modelValue?.text || '',
 			selectedLanguage: this.modelValue?.language || null as Language | null,
+			isLanguageSelectorVisible: !this.modelValue?.language,
 		};
 	},
 	methods: {
@@ -94,11 +96,12 @@ export default defineComponent( {
 					code: languageCode,
 					autonym: autonyms[ languageCode ] || languageCode,
 				};
+				this.isLanguageSelectorVisible = false;
 				this.emitUpdate();
 			} );
 		},
 		onLanguageSelectorClose(): void {
-			// Selector closed without selection
+			this.isLanguageSelectorVisible = false;
 		},
 		emitUpdate(): void {
 			this.$emit( 'update:modelValue', {
@@ -112,13 +115,18 @@ export default defineComponent( {
 			if ( isDisabled ) {
 				this.textValue = '';
 				this.selectedLanguage = null;
+				this.isLanguageSelectorVisible = true;
 			}
 		},
 		modelValue( newValue: MonolingualTextValue | null ): void {
 			if ( newValue ) {
 				this.textValue = newValue.text;
 				this.selectedLanguage = newValue.language;
+				this.isLanguageSelectorVisible = !newValue.language;
+				return;
 			}
+			this.selectedLanguage = null;
+			this.isLanguageSelectorVisible = true;
 		},
 	},
 } );
