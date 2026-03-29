@@ -32,6 +32,7 @@ export function getFreshConditionRow( isFirstCondition: boolean ): ConditionRow 
 		subclasses: false,
 		negate: false,
 		conditionRelation: isFirstCondition ? null : ConditionRelation.And,
+		sourceConditionId: null,
 		conditionId: `condition-id-${Math.random()}`,
 	};
 }

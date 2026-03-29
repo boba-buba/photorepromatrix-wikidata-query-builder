@@ -362,6 +362,7 @@ describe( 'actions', () => {
 			referenceRelation: ReferenceRelation.Regardless,
 			conditionId: 'TO BE FILLED WITH THE GENERATED RANDOM VALUE',
 			conditionRelation: ConditionRelation.And,
+			sourceConditionId: null,
 			subclasses: false,
 			negate: false,
 		};
@@ -785,6 +786,7 @@ describe( 'actions', () => {
 					},
 					subclasses: true,
 					conditionRelation: null,
+					sourceConditionId: null,
 					negate: false,
 				} ],
 				limit: 10,

@@ -29,6 +29,7 @@ export default class QueryDeserializer {
 						referenceRelation: condition.referenceRelation,
 						subclasses: condition.subclasses,
 						conditionRelation: condition.conditionRelation,
+						sourceConditionId: condition.sourceConditionId || null,
 						negate: condition.negate,
 						conditionId: conditionId.toString(),
 					},

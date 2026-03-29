@@ -20,9 +20,10 @@ export default class PatternBuilder implements ValuePatternBuilder {
 		condition: Condition,
 		conditionIndex: number,
 		repeatingPropertyIndex: string,
+		subjectVariableName: string,
 	): Pattern[] {
 		return this.getValuePatternBuilderForDatatype( condition.datatype )
-			.buildValuePatternFromCondition( condition, conditionIndex, repeatingPropertyIndex );
+			.buildValuePatternFromCondition( condition, conditionIndex, repeatingPropertyIndex, subjectVariableName );
 	}
 
 	private getValuePatternBuilderForDatatype( datatype: string ): ValuePatternBuilder {

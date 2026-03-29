@@ -7,6 +7,7 @@ import UnitValue from '@/data-model/UnitValue';
 export type ConditionValue = string | UnitValue | TimeValue;
 
 export type Condition = {
+	conditionId?: string;
 	propertyId: string;
 	value: ConditionValue;
 	datatype: string; // FIXME: make enum?
@@ -14,6 +15,7 @@ export type Condition = {
 	referenceRelation: ReferenceRelation;
 	subclasses: boolean;
 	conditionRelation: ConditionRelation | null;
+	sourceConditionId?: string | null;
 	negate: boolean;
 };
 

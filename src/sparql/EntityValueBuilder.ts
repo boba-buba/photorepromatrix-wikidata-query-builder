@@ -21,6 +21,7 @@ export default class EntityValueBuilder implements ValuePatternBuilder {
 		condition: Condition,
 		conditionIndex: number,
 		repeatingPropertyIndex: string,
+		subjectVariableName: string,
 	): Pattern[] {
 		const {
 			propertyId,
@@ -39,12 +40,13 @@ export default class EntityValueBuilder implements ValuePatternBuilder {
 			throw new Error( 'Unexpected ' + this.expectedDatatype + ' value type: ' + typeof value );
 		}
 		let patterns: Pattern[] = [];
+		const hasStableConditionId = typeof condition.conditionId === 'string' && condition.conditionId !== '';
 
 		const statementVariable = this.syntaxBuilder.buildVariableTermFromName( 'statement' + conditionIndex );
 		const entityToStatementTriple = this.syntaxBuilder.buildSimpleTriple(
 			{
 				termType: 'Variable',
-				value: 'item',
+				value: subjectVariableName,
 			},
 			rdfNamespaces.p + propertyId,
 			statementVariable,
@@ -54,7 +56,14 @@ export default class EntityValueBuilder implements ValuePatternBuilder {
 			this.buildStatementToValuePredicateItems(
 				propertyId, subclasses,
 			),
-			this.buildObjectItems( propertyId, propertyValueRelation, value, repeatingPropertyIndex ),
+			this.buildObjectItems(
+				conditionIndex,
+				propertyId,
+				repeatingPropertyIndex,
+				propertyValueRelation,
+				value,
+				hasStableConditionId,
+			),
 		);
 		const entityValuePattern = this.syntaxBuilder.buildBgpPattern( [
 			entityToStatementTriple,
@@ -79,18 +88,18 @@ export default class EntityValueBuilder implements ValuePatternBuilder {
 		}
 
 		if ( propertyValueRelation === PropertyValueRelation.NotMatching ) {
-			const notMatchingPattern = this.buildNotMatchingPattern( propertyId, value );
+			const notMatchingPattern = this.buildNotMatchingPattern( propertyId, value, subjectVariableName );
 			patterns.push( notMatchingPattern );
 		}
 
 		return patterns;
 	}
 
-	private buildNotMatchingPattern( propertyId: string, value: string ): MinusPattern {
+	private buildNotMatchingPattern( propertyId: string, value: string, subjectVariableName: string ): MinusPattern {
 		const notMatchingValueTriple = this.syntaxBuilder.buildPathTriple(
 			{
 				termType: 'Variable',
-				value: 'item',
+				value: subjectVariableName,
 			},
 			[
 				rdfNamespaces.p + propertyId,
@@ -139,21 +148,29 @@ export default class EntityValueBuilder implements ValuePatternBuilder {
 	}
 
 	private buildObjectItems(
+		conditionIndex: number,
 		propertyId: string,
+		propertyIndex: string,
 		propertyValueRelation: PropertyValueRelation,
 		value: string,
-		propertyIndex: string,
+		hasStableConditionId: boolean,
 	): Term {
 		switch ( propertyValueRelation ) {
 			case ( PropertyValueRelation.NotMatching ):
 				return {
 					termType: 'Variable',
-					value: 'instance', // TODO should this have + propertyId?
+					value: hasStableConditionId ? `conditionValue_${conditionIndex}` : 'instance',
 				};
 			case ( PropertyValueRelation.Regardless ):
+				if ( !hasStableConditionId ) {
+					return {
+						termType: 'BlankNode',
+						value: propertyIndex !== '' ? `anyValue${propertyId}_${propertyIndex}` : `anyValue${propertyId}`,
+					};
+				}
 				return {
-					termType: 'BlankNode',
-					value: propertyIndex !== '' ? `anyValue${propertyId}_${propertyIndex}` : `anyValue${propertyId}`,
+					termType: 'Variable',
+					value: `conditionValue_${conditionIndex}`,
 				};
 			case ( PropertyValueRelation.Matching ):
 				return {

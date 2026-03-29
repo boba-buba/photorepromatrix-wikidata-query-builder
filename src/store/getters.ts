@@ -65,6 +65,7 @@ export default {
 					throw new Error( 'missing datatype!' );
 				}
 				return {
+					conditionId: condition.conditionId,
 					propertyId: condition.propertyData.id,
 					value: getQueryValueFromStoreValue( condition.propertyData.datatype, condition.valueData.value ),
 					referenceRelation: condition.referenceRelation,
@@ -72,6 +73,7 @@ export default {
 					datatype: condition.propertyData.datatype,
 					subclasses: condition.subclasses,
 					conditionRelation: condition.conditionRelation,
+					sourceConditionId: condition.sourceConditionId,
 					negate: condition.negate,
 				};
 			} ),

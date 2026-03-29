@@ -58,6 +58,7 @@ describe( 'SharableLink component', () => {
 				subclasses: false,
 				negate: false,
 				conditionRelation: null,
+				sourceConditionId: null,
 				conditionId: 'condition-id-0.22964934794563008',
 			},
 		];

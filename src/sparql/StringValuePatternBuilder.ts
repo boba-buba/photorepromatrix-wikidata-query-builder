@@ -23,6 +23,7 @@ export default class StringValuePatternBuilder implements ValuePatternBuilder {
 		condition: Condition,
 		conditionIndex: number,
 		repeatingPropertyIndex: string,
+		subjectVariableName: string,
 	): Pattern[] {
 		const {
 			propertyId,
@@ -44,7 +45,7 @@ export default class StringValuePatternBuilder implements ValuePatternBuilder {
 
 		const statementVariable = this.syntaxBuilder.buildVariableTermFromName( 'statement' + conditionIndex );
 		const entityToStatementTriple = this.syntaxBuilder.buildSimpleTriple(
-			{ termType: 'Variable', value: 'item' },
+			{ termType: 'Variable', value: subjectVariableName },
 			rdfNamespaces.p + propertyId,
 			statementVariable,
 		);
@@ -76,7 +77,12 @@ export default class StringValuePatternBuilder implements ValuePatternBuilder {
 		}
 
 		if ( propertyValueRelation === PropertyValueRelation.NotMatching ) {
-			const notMatchingPattern = this.buildNotMatchingPattern( propertyId, value, objectTermType );
+			const notMatchingPattern = this.buildNotMatchingPattern(
+				propertyId,
+				value,
+				objectTermType,
+				subjectVariableName,
+			);
 			patterns.push( notMatchingPattern );
 		}
 
@@ -134,11 +140,12 @@ export default class StringValuePatternBuilder implements ValuePatternBuilder {
 		propertyId: string,
 		value: string,
 		objectTermType: StringTermType,
+		subjectVariableName: string,
 	): MinusPattern {
 		const notMatchingValueTriple = this.syntaxBuilder.buildPathTriple(
 			{
 				termType: 'Variable',
-				value: 'item',
+				value: subjectVariableName,
 			},
 			[
 				rdfNamespaces.p + propertyId,

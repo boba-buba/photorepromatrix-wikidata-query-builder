@@ -19,6 +19,7 @@ export default class LimitedSupportPatternBuilder implements ValuePatternBuilder
 		condition: Condition,
 		conditionIndex: number,
 		repeatingPropertyIndex: string,
+		subjectVariableName: string,
 	): Pattern[] {
 		const {
 			propertyId,
@@ -35,7 +36,7 @@ export default class LimitedSupportPatternBuilder implements ValuePatternBuilder
 
 		const statementVariable = this.syntaxBuilder.buildVariableTermFromName( 'statement' + conditionIndex );
 		const entityToStatementTriple = this.syntaxBuilder.buildSimpleTriple(
-			{ termType: 'Variable', value: 'item' },
+			{ termType: 'Variable', value: subjectVariableName },
 			rdfNamespaces.p + propertyId,
 			statementVariable,
 		);

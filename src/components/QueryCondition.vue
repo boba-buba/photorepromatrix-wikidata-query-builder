@@ -7,6 +7,25 @@
 		/>
 		<div class="query-condition__input-container">
 			<div>
+				<label class="query-condition__source-label" :for="`condition-source-select-${conditionIndex}`">
+					Apply to
+				</label>
+				<select
+					:id="`condition-source-select-${conditionIndex}`"
+					v-model="selectedConditionSource"
+					class="query-condition__source-select"
+				>
+					<option :value="''">This item</option>
+					<option
+						v-for="option in conditionSourceOptions"
+						:key="option.id"
+						:value="option.id"
+					>
+						{{ option.label }}
+					</option>
+				</select>
+			</div>
+			<div>
 				<!-- this is needed because the vue2-common eslint configuration is not recognizing
 				the methods passed through mapGetters -->
 				<!-- eslint-disable vue/no-undef-properties -->
@@ -93,6 +112,49 @@ export default defineComponent( {
 		return { store };
 	},
 	computed: {
+		conditionSourceOptions(): Array<{ id: string; label: string }> {
+			const store = useStore();
+			const rows = store.getConditionRows;
+			return rows
+				.slice( 0, this.conditionIndex )
+				.map( ( row, index ) => ( { row, index } ) )
+				.filter( ( rowWithIndex ) => {
+					const row = rowWithIndex.row;
+					if ( !row.propertyData.isPropertySet || row.propertyData.datatype === null ) {
+						return false;
+					}
+					const entityDatatypes = new Set( [
+						'wikibase-item',
+						'wikibase-lexeme',
+						'wikibase-sense',
+						'wikibase-form',
+						'wikibase-property',
+					] );
+					return entityDatatypes.has( row.propertyData.datatype ) &&
+						row.propertyValueRelationData.value === PropertyValueRelation.Regardless &&
+						row.negate === false;
+				} )
+				.map( ( rowWithIndex ) => {
+					const row = rowWithIndex.row;
+					return {
+						id: row.conditionId,
+						label: `Condition ${rowWithIndex.index + 1}: ${row.propertyData.label || row.propertyData.id}`,
+					};
+				} );
+		},
+		selectedConditionSource: {
+			get(): string {
+				const store = useStore();
+				return store.getConditionRows[ this.conditionIndex ].sourceConditionId || '';
+			},
+			set( sourceConditionId: string ): void {
+				const store = useStore();
+				store.setConditionSource( {
+					sourceConditionId: sourceConditionId === '' ? null : sourceConditionId,
+					conditionIndex: this.conditionIndex,
+				} );
+			},
+		},
 		datatype(): string | null {
 			const store = useStore();
 			return store.datatype( this.conditionIndex );
@@ -259,6 +321,16 @@ $tinyViewportWidth: $max-width-breakpoint-mobile; // Set so that inputs show all
 			padding-block-start: var(--dimension-layout-small);
 			clear: both;
 		}
+	}
+
+	&__source-label {
+		display: block;
+		margin-block-end: $spacing-25;
+	}
+
+	&__source-select {
+		inline-size: 100%;
+		min-block-size: 32px;
 	}
 }
 </style>

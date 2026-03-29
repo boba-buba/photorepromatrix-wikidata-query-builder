@@ -5,6 +5,7 @@ export default interface ValuePatternBuilder {
 	buildValuePatternFromCondition(
 		condition: Condition,
 		conditionIndex: number,
-		repeatingPropertyIndex: string
+		repeatingPropertyIndex: string,
+		subjectVariableName: string,
 	): Pattern[];
 }

@@ -37,6 +37,7 @@ describe( 'createStore', () => {
 				},
 				referenceRelation: ReferenceRelation.Regardless,
 				conditionRelation: null,
+				sourceConditionId: null,
 				subclasses: false,
 				conditionId: store.conditionRows[ 0 ].conditionId, // this is auto-generated and random
 			} ],

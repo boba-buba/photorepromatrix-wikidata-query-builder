@@ -20,13 +20,19 @@ export default class DateValuePatternBuilder implements ValuePatternBuilder {
 	private readonly tripleBuilder: TripleBuilder;
 	private readonly syntaxBuilder: SyntaxBuilder;
 	private conditionIndex: number | null = null;
+	private subjectVariableName: string = 'item';
 
 	public constructor() {
 		this.tripleBuilder = new TripleBuilder();
 		this.syntaxBuilder = new SyntaxBuilder();
 	}
 
-	public buildValuePatternFromCondition( condition: Condition, conditionIndex: number ): Pattern[] {
+	public buildValuePatternFromCondition(
+		condition: Condition,
+		conditionIndex: number,
+		_repeatingPropertyIndex: string,
+		subjectVariableName: string,
+	): Pattern[] {
 		const {
 			propertyId,
 			referenceRelation,
@@ -35,6 +41,7 @@ export default class DateValuePatternBuilder implements ValuePatternBuilder {
 			negate,
 		} = condition;
 		this.conditionIndex = conditionIndex;
+		this.subjectVariableName = subjectVariableName;
 
 		let patterns: Pattern[];
 
@@ -280,7 +287,7 @@ export default class DateValuePatternBuilder implements ValuePatternBuilder {
 	private addEntityToStatementPattern( patterns: Pattern[], propertyId: string ): Pattern[] {
 		const statementVariable = this.getConditionVariable( 'statement' );
 		const entityToStatementTriple = this.syntaxBuilder.buildSimpleTriple(
-			{ termType: 'Variable', value: 'item' },
+			{ termType: 'Variable', value: this.subjectVariableName },
 			rdfNamespaces.p + propertyId,
 			statementVariable,
 		);

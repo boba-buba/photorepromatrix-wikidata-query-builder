@@ -1,4 +1,5 @@
 import ReferenceRelation from '@/data-model/ReferenceRelation';
+import PropertyValueRelation from '@/data-model/PropertyValueRelation';
 import PatternBuilder from '@/sparql/PatternBuilder';
 import QueryRepresentation, { Condition } from '@/sparql/QueryRepresentation';
 import rdfNamespaces from '@/sparql/rdfNamespaces';
@@ -12,6 +13,14 @@ export default class QueryObjectBuilder {
 	private conditionIndex = 0;
 	private queryRepresentation: QueryRepresentation;
 	private conditions: RootNode;
+	private conditionOutputVariableById: Record<string, string>;
+	private readonly chainableDatatypes = new Set( [
+		'wikibase-item',
+		'wikibase-lexeme',
+		'wikibase-sense',
+		'wikibase-form',
+		'wikibase-property',
+	] );
 
 	public constructor( queryRepresentation: QueryRepresentation ) {
 		this.queryObject = {
@@ -25,6 +34,7 @@ export default class QueryObjectBuilder {
 		this.patternBuilder = new PatternBuilder();
 		this.queryRepresentation = queryRepresentation;
 		this.conditions = this.buildConditionTree( queryRepresentation.conditions );
+		this.conditionOutputVariableById = {};
 	}
 
 	public buildFromQueryRepresentation(): SelectQuery {
@@ -119,16 +129,19 @@ export default class QueryObjectBuilder {
 		const unionConditions = [];
 		for ( let i = 0; i < conditions.length; i++ ) {
 			const conditionIndex = this.conditionIndex++;
+			const subjectVariableName = this.getSubjectVariableName( conditions[ i ] );
 			const repeatingPropertyIndex =
 				this.propertyRegardlessOfValueOccursMoreThanOnce( conditions[ i ].propertyId ) ?
 					conditionIndex.toString() :
 					'';
+			this.trackConditionOutputVariable( conditions[ i ], conditionIndex );
 			const unionConditionGroup: Pattern = {
 				type: 'group',
 				patterns: this.patternBuilder.buildValuePatternFromCondition(
 					conditions[ i ],
 					conditionIndex,
 					repeatingPropertyIndex,
+					subjectVariableName,
 				),
 			};
 			unionConditions.push( unionConditionGroup );
@@ -150,17 +163,46 @@ export default class QueryObjectBuilder {
 			this.queryObject.where = [];
 		}
 		const conditionIndex = this.conditionIndex++;
+		const subjectVariableName = this.getSubjectVariableName( condition );
 		const repeatingPropertyIndex = this.propertyRegardlessOfValueOccursMoreThanOnce( condition.propertyId ) ?
 			conditionIndex.toString() :
 			'';
+		this.trackConditionOutputVariable( condition, conditionIndex );
 		this.queryObject.where.push(
 			...this.patternBuilder.buildValuePatternFromCondition(
 				condition,
 				conditionIndex,
 				repeatingPropertyIndex,
+				subjectVariableName,
 			),
 		);
 		return;
+	}
+
+	private getSubjectVariableName( condition: Condition ): string {
+		if ( !condition.sourceConditionId ) {
+			return 'item';
+		}
+
+		const chainedSubjectVariable = this.conditionOutputVariableById[ condition.sourceConditionId ];
+		if ( chainedSubjectVariable ) {
+			return chainedSubjectVariable;
+		}
+
+		return 'item';
+	}
+
+	private trackConditionOutputVariable( condition: Condition, conditionIndex: number ): void {
+		if ( !condition.conditionId ) {
+			return;
+		}
+		if (
+			this.chainableDatatypes.has( condition.datatype ) &&
+			condition.propertyValueRelation === PropertyValueRelation.Regardless &&
+			condition.negate === false
+		) {
+			this.conditionOutputVariableById[ condition.conditionId ] = `conditionValue_${conditionIndex}`;
+		}
 	}
 
 	private wrapQueryWithLabel(): SelectQuery {
