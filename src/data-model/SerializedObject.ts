@@ -22,5 +22,6 @@ export default interface SerializedCondition {
 	value: SerializedValue;
 	subclasses: boolean;
 	conditionRelation: ConditionRelation | null;
+	sourceConditionId?: string | null;
 	negate: boolean;
 }

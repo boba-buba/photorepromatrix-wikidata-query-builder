@@ -70,6 +70,7 @@ export interface ConditionRow {
 	// conditionRelation between the current condition and the condition above.
 	// If there is only one condition this property = null
 	conditionRelation: ConditionRelation | null;
+	sourceConditionId: string | null;
 	negate: boolean;
 	readonly conditionId: string;
 }

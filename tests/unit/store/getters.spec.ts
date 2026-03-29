@@ -90,6 +90,7 @@ describe( 'getters', () => {
 			const expectedValue: QueryRepresentation = {
 				conditions: [
 					{
+						conditionId: '0.123',
 						propertyId: 'P123',
 						value: 'foo',
 						propertyValueRelation: PropertyValueRelation.Matching,
@@ -97,6 +98,7 @@ describe( 'getters', () => {
 						datatype: 'string',
 						subclasses: false,
 						conditionRelation: null,
+						sourceConditionId: null,
 						negate: false,
 					},
 				],
@@ -132,6 +134,7 @@ describe( 'getters', () => {
 			const expectedValue: QueryRepresentation = {
 				conditions: [
 					{
+						conditionId: '0.123',
 						propertyId: 'P123',
 						value: { value: 10, unit: 'mts' },
 						propertyValueRelation: PropertyValueRelation.Matching,
@@ -139,6 +142,7 @@ describe( 'getters', () => {
 						datatype: 'quantity',
 						subclasses: false,
 						conditionRelation: null,
+						sourceConditionId: null,
 						negate: false,
 					},
 				],
@@ -169,6 +173,7 @@ describe( 'getters', () => {
 			const expectedValue: QueryRepresentation = {
 				conditions: [
 					{
+						conditionId: '0.123',
 						propertyId: 'P123',
 						value: 'X0',
 						propertyValueRelation: PropertyValueRelation.Matching,
@@ -176,6 +181,7 @@ describe( 'getters', () => {
 						datatype: dataType,
 						subclasses: false,
 						conditionRelation: null,
+						sourceConditionId: null,
 						negate: false,
 					},
 				],
@@ -200,6 +206,7 @@ describe( 'getters', () => {
 			const expectedValue: QueryRepresentation = {
 				conditions: [
 					{
+						conditionId: '0.123',
 						propertyId: 'P123',
 						value: 'foo',
 						propertyValueRelation: PropertyValueRelation.Matching,
@@ -207,6 +214,7 @@ describe( 'getters', () => {
 						datatype: 'string',
 						subclasses: false,
 						conditionRelation: null,
+						sourceConditionId: null,
 						negate: false,
 					},
 				],
@@ -232,6 +240,7 @@ describe( 'getters', () => {
 			const expectedValue: QueryRepresentation = {
 				conditions: [
 					{
+						conditionId: '0.123',
 						propertyId: 'P123',
 						value: 'foo',
 						propertyValueRelation: PropertyValueRelation.Matching,
@@ -239,6 +248,7 @@ describe( 'getters', () => {
 						datatype: 'string',
 						subclasses: true,
 						conditionRelation: null,
+						sourceConditionId: null,
 						negate: false,
 					},
 				],
@@ -264,6 +274,7 @@ describe( 'getters', () => {
 			const expectedValue: QueryRepresentation = {
 				conditions: [
 					{
+						conditionId: '0.123',
 						propertyId: 'P123',
 						value: 'foo',
 						propertyValueRelation: PropertyValueRelation.Matching,
@@ -271,6 +282,7 @@ describe( 'getters', () => {
 						datatype: 'string',
 						subclasses: false,
 						conditionRelation: null,
+						sourceConditionId: null,
 						negate: true,
 					},
 				],

@@ -18,7 +18,12 @@ export default class QuantityValuePatternBuilder implements ValuePatternBuilder 
 		this.syntaxBuilder = new SyntaxBuilder();
 	}
 
-	public buildValuePatternFromCondition( condition: Condition, conditionIndex: number ): Pattern[] {
+	public buildValuePatternFromCondition(
+		condition: Condition,
+		conditionIndex: number,
+		_repeatingPropertyIndex: string,
+		subjectVariableName: string,
+	): Pattern[] {
 		const {
 			propertyId,
 			negate,
@@ -35,7 +40,12 @@ export default class QuantityValuePatternBuilder implements ValuePatternBuilder 
 		let patterns: Pattern[];
 
 		if ( propertyValueRelation === PropertyValueRelation.Regardless ) {
-			patterns = this.buildRegardlessOfValuePattern( propertyId, conditionIndex, referenceRelation );
+			patterns = this.buildRegardlessOfValuePattern(
+				propertyId,
+				conditionIndex,
+				referenceRelation,
+				subjectVariableName,
+			);
 		} else {
 			patterns = this.buildValuePatterns(
 				value,
@@ -43,6 +53,7 @@ export default class QuantityValuePatternBuilder implements ValuePatternBuilder 
 				propertyId,
 				conditionIndex,
 				referenceRelation,
+				subjectVariableName,
 			);
 		}
 
@@ -61,6 +72,7 @@ export default class QuantityValuePatternBuilder implements ValuePatternBuilder 
 		propertyId: string,
 		conditionIndex: number,
 		referenceRelation: ReferenceRelation,
+		subjectVariableName: string,
 	): Pattern[] {
 		if ( !this.isQuantityValue( value ) ) {
 			throw new Error( 'Unexpected value quantity value: ' + JSON.stringify( value ) );
@@ -76,6 +88,7 @@ export default class QuantityValuePatternBuilder implements ValuePatternBuilder 
 				conditionIndex,
 				referenceRelation,
 				propertyValueRelation,
+				subjectVariableName,
 			);
 		} else {
 			return this.buildFullQuantityPattern(
@@ -85,6 +98,7 @@ export default class QuantityValuePatternBuilder implements ValuePatternBuilder 
 				propertyId,
 				referenceRelation,
 				propertyValueRelation,
+				subjectVariableName,
 			);
 		}
 	}
@@ -93,6 +107,7 @@ export default class QuantityValuePatternBuilder implements ValuePatternBuilder 
 		propertyId: string,
 		conditionIndex: number,
 		referenceRelation: ReferenceRelation,
+		subjectVariableName: string,
 	): Pattern[] {
 		const numericQuantityVariable = this.syntaxBuilder.buildVariableTermFromName( 'numericQuantity' );
 		const statementVariable = this.syntaxBuilder.buildVariableTermFromName( 'statement' + conditionIndex );
@@ -100,7 +115,7 @@ export default class QuantityValuePatternBuilder implements ValuePatternBuilder 
 			this.syntaxBuilder.buildSimpleTriple(
 				{
 					termType: 'Variable',
-					value: 'item',
+					value: subjectVariableName,
 				},
 				rdfNamespaces.p + propertyId,
 				statementVariable,
@@ -135,6 +150,7 @@ export default class QuantityValuePatternBuilder implements ValuePatternBuilder 
 		propertyId: string,
 		referenceRelation: ReferenceRelation,
 		propertyValueRelation: PropertyValueRelation,
+		subjectVariableName: string,
 	): Pattern[] {
 		const patterns: Pattern[] = [];
 
@@ -201,7 +217,7 @@ export default class QuantityValuePatternBuilder implements ValuePatternBuilder 
 		const entityToStatementTriple = this.syntaxBuilder.buildSimpleTriple(
 			{
 				termType: 'Variable',
-				value: 'item',
+				value: subjectVariableName,
 			},
 			rdfNamespaces.p + propertyId,
 			statementVariable,
@@ -259,6 +275,7 @@ export default class QuantityValuePatternBuilder implements ValuePatternBuilder 
 		conditionIndex: number,
 		referenceRelation: ReferenceRelation,
 		propertyValueRelation: PropertyValueRelation,
+		subjectVariableName: string,
 	): Pattern[] {
 		const patterns: Pattern[] = [];
 		const numericQuantityVariable = this.syntaxBuilder.buildVariableTermFromName( 'numericQuantity' );
@@ -267,7 +284,7 @@ export default class QuantityValuePatternBuilder implements ValuePatternBuilder 
 			this.syntaxBuilder.buildSimpleTriple(
 				{
 					termType: 'Variable',
-					value: 'item',
+					value: subjectVariableName,
 				},
 				rdfNamespaces.p + propertyId,
 				statementVariable,

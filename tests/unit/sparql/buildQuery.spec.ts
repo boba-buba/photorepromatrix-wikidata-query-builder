@@ -89,6 +89,39 @@ describe( 'buildQuery', () => {
 		expect( actualQuery.replace( /\s+/g, ' ' ) ).toEqual( expectedQuery.replace( /\s+/g, ' ' ) );
 	} );
 
+	it( 'builds a chained query where a condition targets a previous condition output', () => {
+		const expectedQuery = `SELECT DISTINCT ?item WHERE {
+		  ?item p:P31 ?statement0. ?statement0 (ps:P31) wd:Q3305213.
+		  ?item p:P170 ?statement1. ?statement1 (ps:P170) ?conditionValue_1.
+		  ?conditionValue_1 p:P27 ?statement2. ?statement2 (ps:P27) wd:Q29.
+		}`;
+
+		const actualQuery = buildQuery( {
+			conditions: [
+				{
+					conditionId: 'condition-1',
+					...getSimpleCondition( 'P31', 'Q3305213' ),
+					datatype: 'wikibase-item',
+				},
+				{
+					conditionId: 'condition-2',
+					...getSimpleCondition( 'P170', '' ),
+					datatype: 'wikibase-item',
+					propertyValueRelation: PropertyValueRelation.Regardless,
+				},
+				{
+					conditionId: 'condition-3',
+					sourceConditionId: 'condition-2',
+					...getSimpleCondition( 'P27', 'Q29' ),
+					datatype: 'wikibase-item',
+				},
+			],
+			omitLabels: true,
+		} );
+
+		expect( actualQuery.replace( /\s+/g, ' ' ) ).toEqual( expectedQuery.replace( /\s+/g, ' ' ) );
+	} );
+
 	it( 'builds a query only with references', () => {
 		const propertyId = 'P666';
 		const value = 'blah';

@@ -23,6 +23,7 @@ function getStateConditionRow( propertyId: string, value: Value, datatype = 'str
 			},
 			referenceRelation: ReferenceRelation.Regardless,
 			conditionRelation: null,
+			sourceConditionId: null,
 			subclasses: false,
 			negate: false,
 			conditionId: '123',

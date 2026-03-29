@@ -208,6 +208,11 @@ export default (
 		const store = useStore();
 		store.conditionRows[ payload.conditionIndex ].conditionRelation = payload.value;
 	},
+	setConditionSource(
+		payload: { sourceConditionId: string | null; conditionIndex: number } ): void {
+		const store = useStore();
+		store.conditionRows[ payload.conditionIndex ].sourceConditionId = payload.sourceConditionId;
+	},
 	setErrors( errors: QueryBuilderError[] ): void {
 		const store = useStore();
 		store.errors = errors;
@@ -221,7 +226,15 @@ export default (
 	},
 	removeCondition( conditionIndex: number ): void {
 		const store = useStore();
+		const removedConditionId = store.conditionRows[ conditionIndex ]?.conditionId || null;
 		store.conditionRows.splice( conditionIndex, 1 );
+		if ( removedConditionId !== null ) {
+			store.conditionRows.forEach( ( conditionRow ) => {
+				if ( conditionRow.sourceConditionId === removedConditionId ) {
+					conditionRow.sourceConditionId = null;
+				}
+			} );
+		}
 		if ( store.conditionRows.length === 1 ) {
 			store.conditionRows[ 0 ].conditionRelation = null;
 		}

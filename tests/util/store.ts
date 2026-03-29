@@ -21,6 +21,7 @@ export function getFreshRootState(): RootState {
 			referenceRelation: ReferenceRelation.Regardless,
 			conditionId: '0.123',
 			conditionRelation: null,
+			sourceConditionId: null,
 			subclasses: false,
 			negate: false,
 		} ],
