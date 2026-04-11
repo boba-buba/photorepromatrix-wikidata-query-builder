@@ -1,0 +1,6 @@
+docker compose build --build-arg UID=1000 --build-arg GID=1000 node
+docker compose run --rm node npm i
+docker compose run --rm node npm
+docker compose up dev
+
+P.S. All files must be owned by non-root user

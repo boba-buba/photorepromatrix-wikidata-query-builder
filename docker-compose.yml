@@ -2,6 +2,9 @@ services:
   node:
     build:
       context: ./
+      args:
+        UID: 1000
+        GID: 1000
     image: wmde/query-builder
     volumes:
       - "~/.npm:/.npm"
@@ -10,6 +13,7 @@ services:
     environment:
       # Ensures cypress installs and looks for it's binary in a project local directory
       - CYPRESS_CACHE_FOLDER=./.cache/cypress
+    user: "1000:1000"
 
   dev:
     extends:
