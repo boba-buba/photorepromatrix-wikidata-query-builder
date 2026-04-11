@@ -47,6 +47,8 @@
 	"query-builder-value-type-relation-dropdown-more-than-quantity": "více než",
 	"query-builder-value-type-relation-dropdown-less-than-date": "před",
 	"query-builder-value-type-relation-dropdown-more-than-date": "po",
+	"query-builder-apply-to-label": "Použít na",
+	"query-builder-apply-to-this-item": "Tato položka",
 	"query-builder-reference-relation-label": "Reference",
 	"query-builder-reference-relation-tooltip": "Výsledky můžete dále zúžit tím, že zobrazíte pouze výroky s referencemi nebo bez nich.",
 	"query-builder-reference-relation-dropdown-with": "pouze s referencemi",
