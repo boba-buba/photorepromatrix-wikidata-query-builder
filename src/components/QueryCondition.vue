@@ -7,23 +7,18 @@
 		/>
 		<div class="query-condition__input-container">
 			<div>
-				<label class="query-condition__source-label" :for="`condition-source-select-${conditionIndex}`">
-					Apply to
-				</label>
-				<select
-					:id="`condition-source-select-${conditionIndex}`"
-					v-model="selectedConditionSource"
-					class="query-condition__source-select"
-				>
-					<option :value="''">This item</option>
-					<option
-						v-for="option in conditionSourceOptions"
-						:key="option.id"
-						:value="option.id"
-					>
-						{{ option.label }}
-					</option>
-				</select>
+				<CdxField>
+					<CdxSelect
+						:id="`condition-source-select-${conditionIndex}`"
+						v-model:selected="selectedConditionSource"
+						class="query-condition__source-select"
+						:menu-items="conditionSourceOptions"
+						:aria-label="applyToLabel"
+					/>
+					<template #label>
+						{{ applyToLabel }}
+					</template>
+				</CdxField>
 			</div>
 			<div>
 				<!-- this is needed because the vue2-common eslint configuration is not recognizing
@@ -89,6 +84,7 @@ import NegationToggle from '@/components/NegationToggle.vue';
 import ReferenceRelation from '@/data-model/ReferenceRelation';
 import { useStore } from '@/store/index';
 import Property from '@/data-model/Property';
+import { CdxField, CdxSelect } from '@wikimedia/codex';
 
 export default defineComponent( {
 	name: 'QueryCondition',
@@ -96,6 +92,8 @@ export default defineComponent( {
 		ValueInput,
 		PropertyLookup,
 		ReferenceRelationDropDown,
+		CdxField,
+		CdxSelect,
 		ValueTypeDropDown,
 		DeleteConditionButton,
 		NegationToggle,
@@ -112,10 +110,19 @@ export default defineComponent( {
 		return { store };
 	},
 	computed: {
-		conditionSourceOptions(): Array<{ id: string; label: string }> {
+		applyToLabel(): string {
+			return this.$i18n( 'query-builder-apply-to-label' );
+		},
+		conditionSourceOptions(): Array<{ value: string; label: string; description: string }> {
 			const store = useStore();
 			const rows = store.getConditionRows;
-			return rows
+			return [
+				{
+					value: '',
+					label: this.$i18n( 'query-builder-apply-to-this-item' ),
+					description: '',
+				},
+				...rows
 				.slice( 0, this.conditionIndex )
 				.map( ( row, index ) => ( { row, index } ) )
 				.filter( ( rowWithIndex ) => {
@@ -137,10 +144,12 @@ export default defineComponent( {
 				.map( ( rowWithIndex ) => {
 					const row = rowWithIndex.row;
 					return {
-						id: row.conditionId,
+						value: row.conditionId,
 						label: `Condition ${rowWithIndex.index + 1}: ${row.propertyData.label || row.propertyData.id}`,
+						description: '',
 					};
-				} );
+				} ),
+			];
 		},
 		selectedConditionSource: {
 			get(): string {
@@ -329,8 +338,9 @@ $tinyViewportWidth: $max-width-breakpoint-mobile; // Set so that inputs show all
 	}
 
 	&__source-select {
-		inline-size: 100%;
-		min-block-size: 32px;
+		:deep(.cdx-select-vue) {
+			inline-size: 100%;
+		}
 	}
 }
 </style>
