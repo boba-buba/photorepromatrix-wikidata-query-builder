@@ -81,7 +81,7 @@ describe( 'QueryCondition.vue', () => {
 		expect( store.updateValue ).toHaveBeenCalledWith( { value: userInput, conditionIndex } );
 	} );
 
-	it( 'set subclasses to true when property type is wikibase-item', async () => {
+	it( 'set subclasses to false when property type is wikibase-item', async () => {
 
 		const property = { label: 'postal code', id: 'P31', datatype: 'wikibase-item' };
 		const conditionIndex = 0;
@@ -98,7 +98,7 @@ describe( 'QueryCondition.vue', () => {
 
 		wrapper.findAllComponents( PropertyLookup )[ conditionIndex ].vm.$emit( 'update:modelValue', property );
 
-		expect( store.setSubclasses ).toHaveBeenCalledWith( { subclasses: true, conditionIndex } );
+		expect( store.setSubclasses ).toHaveBeenCalledWith( { subclasses: false, conditionIndex } );
 	} );
 
 	it( 'set subclasses to false when property type is string', async () => {

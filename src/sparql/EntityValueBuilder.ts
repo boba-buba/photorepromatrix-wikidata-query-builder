@@ -39,6 +39,11 @@ export default class EntityValueBuilder implements ValuePatternBuilder {
 		if ( typeof value !== 'string' ) {
 			throw new Error( 'Unexpected ' + this.expectedDatatype + ' value type: ' + typeof value );
 		}
+
+		if ( this.canUseTruthyFastPath( condition ) ) {
+			return [ this.buildTruthyMatchingPattern( subjectVariableName, propertyId, value, subclasses ) ];
+		}
+
 		let patterns: Pattern[] = [];
 		const hasStableConditionId = typeof condition.conditionId === 'string' && condition.conditionId !== '';
 
@@ -115,6 +120,52 @@ export default class EntityValueBuilder implements ValuePatternBuilder {
 			type: 'minus',
 			patterns: [ this.syntaxBuilder.buildBgpPattern( [ notMatchingValueTriple ] ) ],
 		};
+	}
+
+	private canUseTruthyFastPath( condition: Condition ): boolean {
+		return condition.propertyValueRelation === PropertyValueRelation.Matching &&
+			condition.referenceRelation === 'regardless' &&
+			condition.negate === false &&
+			typeof condition.value === 'string' &&
+			condition.value !== '';
+	}
+
+	private buildTruthyMatchingPattern(
+		subjectVariableName: string,
+		propertyId: string,
+		value: string,
+		subclasses: boolean,
+	): Pattern {
+		const subject: Term = {
+			termType: 'Variable',
+			value: subjectVariableName,
+		};
+		const object: Term = {
+			termType: 'NamedNode',
+			value: `${rdfNamespaces.wd}${value}`,
+		};
+
+		if ( !subclasses ) {
+			return this.syntaxBuilder.buildBgpPattern( [
+				this.syntaxBuilder.buildSimpleTriple( subject, rdfNamespaces.wdt + propertyId, object ),
+			] );
+		}
+
+		return this.syntaxBuilder.buildBgpPattern( [
+			this.syntaxBuilder.buildPathTriple(
+				subject,
+				[
+					rdfNamespaces.wdt + propertyId,
+					this.syntaxBuilder.buildPropertyPath( '*', [
+						{
+							termType: 'NamedNode',
+							value: rdfNamespaces.wdt + this.getSubclassPropertyId( propertyId ),
+						},
+					] ),
+				],
+				object,
+			),
+		] );
 	}
 
 	private buildStatementToValuePredicateItems(

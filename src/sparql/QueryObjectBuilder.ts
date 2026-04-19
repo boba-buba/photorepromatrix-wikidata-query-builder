@@ -75,7 +75,7 @@ export default class QueryObjectBuilder {
 		}
 
 		if ( !this.queryRepresentation.omitLabels ) {
-			return this.wrapQueryWithLabel();
+			this.addLabelServiceToQuery();
 		}
 
 		return this.queryObject;
@@ -205,44 +205,34 @@ export default class QueryObjectBuilder {
 		}
 	}
 
-	private wrapQueryWithLabel(): SelectQuery {
-		const wrapperQuery: SelectQuery = {
-			queryType: 'SELECT',
-			distinct: true,
-			variables: [
-				{
-					termType: 'Variable',
-					value: 'item',
-				},
-				{
-					termType: 'Variable',
-					value: 'itemLabel',
-				},
-			],
-			where: [
-				{
-					type: 'service',
-					patterns: [ this.patternBuilder.buildLabelServicePattern() ],
-					name: {
-						termType: 'NamedNode',
-						value: rdfNamespaces.wikibase + 'label',
-					},
-					silent: false,
-				},
-			],
-			type: 'query',
-			prefixes: rdfNamespaces,
-		};
-
-		if ( !wrapperQuery.where ) {
-			wrapperQuery.where = [];
+	private addLabelServiceToQuery(): void {
+		if ( !this.queryObject.variables ) {
+			this.queryObject.variables = [];
 		}
-		this.queryObject.prefixes = {};
-		wrapperQuery.where.push( {
-			type: 'group',
-			patterns: [ this.queryObject ],
-		} );
 
-		return wrapperQuery;
+		this.queryObject.variables = [
+			{
+				termType: 'Variable',
+				value: 'item',
+			},
+			{
+				termType: 'Variable',
+				value: 'itemLabel',
+			},
+		];
+
+		if ( !this.queryObject.where ) {
+			this.queryObject.where = [];
+		}
+
+		this.queryObject.where.unshift( {
+			type: 'service',
+			patterns: [ this.patternBuilder.buildLabelServicePattern() ],
+			name: {
+				termType: 'NamedNode',
+				value: rdfNamespaces.wikibase + 'label',
+			},
+			silent: false,
+		} );
 	}
 }

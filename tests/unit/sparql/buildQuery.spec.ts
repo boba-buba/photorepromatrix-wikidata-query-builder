@@ -25,9 +25,9 @@ describe( 'buildQuery', () => {
 
 	it( 'builds a query from conditions connected with OR', () => {
 		const expectedQuery = `SELECT DISTINCT ?item WHERE {
-      ?item p:P31 ?statement0. ?statement0 (ps:P31) wd:Q515.
-      { ?item p:P17 ?statement1. ?statement1 (ps:P17) wd:Q17. } UNION
-      { ?item p:P17 ?statement2. ?statement2 (ps:P17) wd:Q183. }
+	?item wdt:P31 wd:Q515.
+	{ ?item wdt:P17 wd:Q17. } UNION
+	{ ?item wdt:P17 wd:Q183. }
     }`;
 
 		const actualQuery = buildQuery( {
@@ -54,10 +54,10 @@ describe( 'buildQuery', () => {
 
 	it( 'builds a query from conditions connected with AND and OR', () => {
 		const expectedQuery = `SELECT DISTINCT ?item WHERE {
-      { ?item p:P31 ?statement0. ?statement0 (ps:P31) wd:Q515. } UNION
-      { ?item p:P17 ?statement1. ?statement1 (ps:P17) wd:Q183. }
-	  { ?item p:P66 ?statement2. ?statement2 (ps:P66) wd:Q432. } UNION
-	  { ?item p:P99 ?statement3. ?statement3 (ps:P99) wd:Q5653. }
+      { ?item wdt:P31 wd:Q515. } UNION
+      { ?item wdt:P17 wd:Q183. }
+ 	  { ?item wdt:P66 wd:Q432. } UNION
+ 	  { ?item wdt:P99 wd:Q5653. }
     }`;
 
 		const actualQuery = buildQuery( {
@@ -91,9 +91,9 @@ describe( 'buildQuery', () => {
 
 	it( 'builds a chained query where a condition targets a previous condition output', () => {
 		const expectedQuery = `SELECT DISTINCT ?item WHERE {
-		  ?item p:P31 ?statement0. ?statement0 (ps:P31) wd:Q3305213.
+		  ?item wdt:P31 wd:Q3305213.
 		  ?item p:P170 ?statement1. ?statement1 (ps:P170) ?conditionValue_1.
-		  ?conditionValue_1 p:P27 ?statement2. ?statement2 (ps:P27) wd:Q29.
+		  ?conditionValue_1 wdt:P27 wd:Q29.
 		}`;
 
 		const actualQuery = buildQuery( {
@@ -316,8 +316,7 @@ describe( 'buildQuery', () => {
 				  ?statement1 (ps:P18) _:anyValueP18_${firstRepeatingPropertyIndex}.
 				}
 				{
-				  ?item p:P30 ?statement2.
-				  ?statement2 (ps:P30/(wdt:P279*)) wd:Q46.
+				  ?item (wdt:P30/(wdt:P279*)) wd:Q46.
 				}
 				UNION
 				{
@@ -408,8 +407,7 @@ describe( 'buildQuery', () => {
 			omitLabels: true,
 		} );
 		const expectedQuery = `SELECT DISTINCT ?item WHERE {
-		?item p:${propertyId} ?statement0.
-			?statement0 (ps:${propertyId}) wd:${value}. }`;
+		?item wdt:${propertyId} wd:${value}. }`;
 		expect( actualQuery.replace( /\s+/g, ' ' ) ).toEqual( expectedQuery.replace( /\s+/g, ' ' ) );
 	} );
 
@@ -438,10 +436,9 @@ describe( 'buildQuery', () => {
 		const expectedQuery =
 			`SELECT DISTINCT ?item ?itemLabel WHERE {
 			SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }
-			{ SELECT DISTINCT ?item WHERE {
 			?item p:P666 ?statement0.
 			?statement0 (ps:P666) "blah".
-			 } } }`;
+			 }`;
 		const actualQuery = buildQuery( {
 			conditions: [ getSimpleCondition( propertyId, value ) ],
 			omitLabels: false,
@@ -455,8 +452,7 @@ describe( 'buildQuery', () => {
 		process.env.VUE_APP_SUBCLASS_PROPERTY_MAP = '{"P666":"P66"}';
 		const expectedQuery =
 			`SELECT DISTINCT ?item WHERE {
-				?item p:${propertyId} ?statement0.
-				?statement0 (ps:${propertyId}/(wdt:P66*)) wd:${value}.
+				?item (wdt:${propertyId}/(wdt:P66*)) wd:${value}.
 			}`;
 		const condition = getSimpleCondition( propertyId, value );
 		condition.datatype = 'wikibase-item';
@@ -476,8 +472,7 @@ describe( 'buildQuery', () => {
 		process.env.VUE_APP_SUBCLASS_PROPERTY_MAP = '{"P66":"P66","default":"P279"}';
 		const expectedQuery =
 			`SELECT DISTINCT ?item WHERE {
-				?item p:${propertyId} ?statement0.
-				?statement0 (ps:${propertyId}/(wdt:P279*)) wd:${value}.
+				?item (wdt:${propertyId}/(wdt:P279*)) wd:${value}.
 			}`;
 		const condition = getSimpleCondition( propertyId, value );
 		condition.datatype = 'wikibase-item';

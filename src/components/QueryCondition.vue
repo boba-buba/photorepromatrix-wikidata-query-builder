@@ -180,7 +180,7 @@ export default defineComponent( {
 					return;
 				}
 				if ( selectedProperty.datatype === 'wikibase-item' ) {
-					store.setSubclasses( { conditionIndex: this.conditionIndex, subclasses: true } );
+					store.setSubclasses( { conditionIndex: this.conditionIndex, subclasses: false } );
 				} else {
 					store.setSubclasses( { conditionIndex: this.conditionIndex, subclasses: false } );
 				}
