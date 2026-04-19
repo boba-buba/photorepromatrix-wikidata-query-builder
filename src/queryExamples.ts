@@ -343,6 +343,37 @@ const queryExamples: QueryExample[] = [
 			omitLabels: false,
 		} ),
 	},
+	{
+		id: 'artworks-of-specific-artist',
+		label: 'Artworks of specific artist',
+		serializedQuery: JSON.stringify( {
+			conditions: [
+				{
+					propertyId: 'P1',
+					propertyDataType: 'wikibase-item',
+					propertyValueRelation: 'matching',
+					referenceRelation: 'regardless',
+					value: 'Q3',
+					subclasses: false,
+					conditionRelation: null,
+					negate: false,
+				},
+				{
+					propertyId: 'P78',
+					propertyDataType: 'wikibase-item',
+					propertyValueRelation: 'matching',
+					referenceRelation: 'regardless',
+					value: 'Q39898',
+					subclasses: false,
+					conditionRelation: 'and',
+					negate: false,
+				},
+			],
+			limit: 100,
+			useLimit: true,
+			omitLabels: false,
+		} ),
+	},
 ];
 
 export default queryExamples;
