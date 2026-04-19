@@ -347,7 +347,10 @@ export default (
 			);
 
 			if ( conditionRow.propertyData.datatype === 'wikibase-item' ) {
-				const itemId = ( conditionRow.valueData.value as ItemValue ).id;
+				const itemId = ( conditionRow.valueData.value as ItemValue | null )?.id;
+				if ( !itemId ) {
+					return;
+				}
 				promises.push(
 					searchEntityRepository.searchItemValues( itemId, 1, 0 )
 						.then( ( searchResults ) => {

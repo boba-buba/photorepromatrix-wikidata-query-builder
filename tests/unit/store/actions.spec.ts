@@ -925,6 +925,79 @@ describe( 'actions', () => {
 			// searchItemValues returned “wrong” result for second call,
 			// so updateValue() only gets dispatched once
 		} );
+
+		it( 'skips item lookup for empty wikibase-item values and continues with next rows', async () => {
+			const searchProperties = jest.fn().mockResolvedValue( [] );
+			const searchItemValues = jest.fn()
+				.mockResolvedValueOnce( [ {
+					id: 'Q11',
+					label: 'issue',
+				} ] )
+				.mockResolvedValueOnce( [ {
+					id: 'Q133056',
+					label: 'Umění',
+				} ] );
+
+			const useMockStore = defineMockStore( {
+				searchEntityRepository: {
+					searchProperties,
+					searchItemValues,
+					searchLexemeValues: jest.fn(),
+					searchSenseValues: jest.fn(),
+					searchFormValues: jest.fn(),
+				},
+			} );
+
+			const state = {
+				conditionRows: [
+					{
+						propertyData: {
+							id: 'P1',
+							datatype: 'wikibase-item',
+						},
+						valueData: { value: { id: 'Q11' } },
+						propertyValueRelationData: {},
+					},
+					{
+						propertyData: {
+							id: 'P29',
+							datatype: 'wikibase-item',
+						},
+						valueData: { value: null },
+						propertyValueRelationData: {},
+					},
+					{
+						propertyData: {
+							id: 'P29',
+							datatype: 'wikibase-item',
+						},
+						valueData: { value: { id: 'Q133056' } },
+						propertyValueRelationData: {},
+					},
+				],
+			};
+
+			const pinia = createTestingPinia( {
+				stubActions: false,
+				initialState: {
+					store: state,
+				},
+			} );
+			const store = useMockStore( pinia );
+
+			await store.searchForEntities();
+
+			expect( searchItemValues ).toHaveBeenCalledTimes( 2 );
+			expect( searchItemValues ).toHaveBeenNthCalledWith( 1, 'Q11', 1, 0 );
+			expect( searchItemValues ).toHaveBeenNthCalledWith( 2, 'Q133056', 1, 0 );
+			expect( store.updateValue ).toHaveBeenCalledWith( {
+				value: {
+					id: 'Q133056',
+					label: 'Umění',
+				},
+				conditionIndex: 2,
+			} );
+		} );
 	} );
 
 } );

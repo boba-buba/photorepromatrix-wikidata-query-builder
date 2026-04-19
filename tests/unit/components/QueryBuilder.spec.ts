@@ -7,6 +7,7 @@ import ConditionRelation from '@/data-model/ConditionRelation';
 import { createTestingPinia } from '@pinia/testing';
 import { useStore } from '@/store/index';
 import { nextTick } from 'vue';
+import queryExamples from '@/queryExamples';
 
 global.ResizeObserver = jest.fn().mockImplementation( () => ( {
 	observe: jest.fn(),
@@ -131,5 +132,47 @@ describe( 'QueryBuilder.vue', () => {
 		expect( actualAttributes.value ).toBe( 'or' );
 		expect( actualAttributes.class ).toContain( 'querybuilder__condition-relation-toggle' );
 		expect( actualAttributes.class ).toContain( 'querybuilder__condition-relation-toggle-or' );
+	} );
+
+	it( 'shows query examples in the menu items', () => {
+		const wrapper = shallowMount( QueryBuilder, {
+			global: {
+				plugins: [ createTestingPinia(), i18n ],
+			},
+		} );
+
+		const menuItems = ( wrapper.vm as unknown as { exampleMenuItems: { label: string; value: string }[] } ).exampleMenuItems;
+
+		expect( menuItems[ 0 ].value ).toBe( '' );
+		expect( menuItems.map( ( item ) => item.value ) ).toContain( queryExamples[ 0 ].id );
+	} );
+
+	it( 'loads selected example query into the store', () => {
+		const wrapper = shallowMount( QueryBuilder, {
+			global: {
+				plugins: [ createTestingPinia(), i18n ],
+			},
+		} );
+
+		const store = useStore();
+		const example = queryExamples[ 0 ];
+
+		( wrapper.vm as unknown as { onSelectExample: ( id: string ) => void } ).onSelectExample( example.id );
+
+		expect( store.parseState ).toHaveBeenCalledWith( example.serializedQuery );
+	} );
+
+	it( 'does not load an example when selection is empty', () => {
+		const wrapper = shallowMount( QueryBuilder, {
+			global: {
+				plugins: [ createTestingPinia(), i18n ],
+			},
+		} );
+
+		const store = useStore();
+
+		( wrapper.vm as unknown as { onSelectExample: ( id: string ) => void } ).onSelectExample( '' );
+
+		expect( store.parseState ).not.toHaveBeenCalled();
 	} );
 } );

@@ -50,6 +50,18 @@
 				<p
 					v-i18n="{ msg: 'query-builder-find-all-items' }"
 					class="querybuilder__query-subtitle" />
+				<div class="querybuilder__examples">
+					<CdxField>
+						<CdxSelect
+							v-model:selected="selectedExample"
+							:menu-items="exampleMenuItems"
+							aria-label="Load example query"
+						/>
+						<template #label>
+							Load an example
+						</template>
+					</CdxField>
+				</div>
 				<div
 					v-if="!conditionRows.length"
 					v-i18n="{ msg: 'query-builder-condition-placeholder' }"
@@ -119,7 +131,7 @@ import Footer from '@/components/Footer.vue';
 import { ConditionRow } from '@/store/RootState';
 import { defineComponent } from 'vue';
 import { DirectiveBinding } from 'vue';
-import { CdxButton, CdxIcon } from '@wikimedia/codex';
+import { CdxButton, CdxField, CdxIcon, CdxSelect } from '@wikimedia/codex';
 import { cdxIconLanguage } from '@wikimedia/codex-icons';
 
 import ConditionRelationToggle from '@/components/ConditionRelationToggle.vue';
@@ -133,15 +145,23 @@ import ConditionRelation from '@/data-model/ConditionRelation';
 import SharableLink from '@/components/SharableLink.vue';
 import LanguageSelector from '@/components/LanguageSelector.vue';
 import languagedata from '@wikimedia/language-data';
+import queryExamples, { QueryExample } from '@/queryExamples';
+import { MenuItem } from '@/types';
 import { useStore } from '@/store/index';
 
 let handleOutsideClick: ( event: MouseEvent | TouchEvent ) => void;
+
+interface QueryExampleMenuItem extends MenuItem {
+	value: string;
+}
 
 export default defineComponent( {
 	name: 'QueryBuilder',
 	components: {
 		CdxIcon,
 		CdxButton,
+		CdxField,
+		CdxSelect,
 		ConditionRelationToggle,
 		QueryResult,
 		QueryCondition,
@@ -190,6 +210,7 @@ export default defineComponent( {
 			encodedQuery: '',
 			iframeRenderKey: 0,
 			showLanguageSelector: false,
+			selectedExampleId: '',
 			resizeObserver: null as unknown as ResizeObserver,
 		};
 	},
@@ -203,6 +224,28 @@ export default defineComponent( {
 		},
 		currentLanguageAutonym(): string {
 			return languagedata.getAutonym( this.lang );
+		},
+		exampleMenuItems(): QueryExampleMenuItem[] {
+			return [
+				{
+					label: 'Choose an example query',
+					description: '',
+					value: '',
+				},
+				...queryExamples.map( ( example: QueryExample ) => ( {
+					label: example.label,
+					description: '',
+					value: example.id,
+				} ) ),
+			];
+		},
+		selectedExample: {
+			get(): string {
+				return this.selectedExampleId;
+			},
+			set( exampleId: string ) {
+				this.onSelectExample( exampleId );
+			},
 		},
 	},
 	methods: {
@@ -283,6 +326,23 @@ export default defineComponent( {
 		},
 		onWindowResize(): void {
 			this.changeLanguageSelectorMenuDirection();
+		},
+		onSelectExample( exampleId: string ): void {
+			this.selectedExampleId = exampleId;
+			if ( !exampleId ) {
+				return;
+			}
+
+			const example = queryExamples.find( ( queryExample: QueryExample ) => queryExample.id === exampleId );
+			if ( !example ) {
+				return;
+			}
+
+			this.store.parseState( example.serializedQuery );
+			const currentUrl = new URL( window.location.href );
+			currentUrl.searchParams.set( 'query', example.serializedQuery );
+			window.history.replaceState( {}, '', currentUrl.toString() );
+			this.encodedQuery = '';
 		},
 	},
 	watch: {
@@ -462,6 +522,14 @@ body.overflow-hidden-on-mobile {
 	@include body-s;
 
 	margin-block: var(--dimension-layout-xsmall) var(--dimension-layout-xxsmall);
+}
+
+.querybuilder__examples {
+	margin-block-end: var(--dimension-layout-xsmall);
+
+	.cdx-select-vue {
+		max-inline-size: 400px;
+	}
 }
 
 .querybuilder__setting-header {
