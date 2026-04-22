@@ -92,7 +92,7 @@ describe( 'buildQuery', () => {
 	it( 'builds a chained query where a condition targets a previous condition output', () => {
 		const expectedQuery = `SELECT DISTINCT ?item WHERE {
 		  ?item wdt:P31 wd:Q3305213.
-		  ?item p:P170 ?statement1. ?statement1 (ps:P170) ?conditionValue_1.
+		  ?item wdt:P170 ?conditionValue_1.
 		  ?conditionValue_1 wdt:P27 wd:Q29.
 		}`;
 

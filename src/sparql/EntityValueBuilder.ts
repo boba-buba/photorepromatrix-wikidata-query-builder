@@ -32,6 +32,7 @@ export default class EntityValueBuilder implements ValuePatternBuilder {
 			negate,
 			subclasses,
 		} = condition;
+		const hasStableConditionId = typeof condition.conditionId === 'string' && condition.conditionId !== '';
 		if ( datatype !== this.expectedDatatype ) {
 			throw new Error( 'Expected datatype ' + this.expectedDatatype + ', got: ' + datatype );
 		}
@@ -40,12 +41,27 @@ export default class EntityValueBuilder implements ValuePatternBuilder {
 			throw new Error( 'Unexpected ' + this.expectedDatatype + ' value type: ' + typeof value );
 		}
 
-		if ( this.canUseTruthyFastPath( condition ) ) {
+		if ( this.canUseTruthyMatchingFastPath( condition ) ) {
 			return [ this.buildTruthyMatchingPattern( subjectVariableName, propertyId, value, subclasses ) ];
 		}
 
+		if ( this.canUseTruthyRegardlessFastPath( condition, hasStableConditionId ) ) {
+			return [ this.buildTruthyRegardlessPattern(
+				subjectVariableName,
+				propertyId,
+				subclasses,
+				this.buildObjectItems(
+					conditionIndex,
+					propertyId,
+					repeatingPropertyIndex,
+					propertyValueRelation,
+					value,
+					hasStableConditionId,
+				),
+			) ];
+		}
+
 		let patterns: Pattern[] = [];
-		const hasStableConditionId = typeof condition.conditionId === 'string' && condition.conditionId !== '';
 
 		const statementVariable = this.syntaxBuilder.buildVariableTermFromName( 'statement' + conditionIndex );
 		const entityToStatementTriple = this.syntaxBuilder.buildSimpleTriple(
@@ -122,12 +138,19 @@ export default class EntityValueBuilder implements ValuePatternBuilder {
 		};
 	}
 
-	private canUseTruthyFastPath( condition: Condition ): boolean {
+	private canUseTruthyMatchingFastPath( condition: Condition ): boolean {
 		return condition.propertyValueRelation === PropertyValueRelation.Matching &&
 			condition.referenceRelation === 'regardless' &&
 			condition.negate === false &&
 			typeof condition.value === 'string' &&
 			condition.value !== '';
+	}
+
+	private canUseTruthyRegardlessFastPath( condition: Condition, hasStableConditionId: boolean ): boolean {
+		return condition.propertyValueRelation === PropertyValueRelation.Regardless &&
+			condition.referenceRelation === 'regardless' &&
+			condition.negate === false &&
+			hasStableConditionId;
 	}
 
 	private buildTruthyMatchingPattern(
@@ -143,6 +166,40 @@ export default class EntityValueBuilder implements ValuePatternBuilder {
 		const object: Term = {
 			termType: 'NamedNode',
 			value: `${rdfNamespaces.wd}${value}`,
+		};
+
+		if ( !subclasses ) {
+			return this.syntaxBuilder.buildBgpPattern( [
+				this.syntaxBuilder.buildSimpleTriple( subject, rdfNamespaces.wdt + propertyId, object ),
+			] );
+		}
+
+		return this.syntaxBuilder.buildBgpPattern( [
+			this.syntaxBuilder.buildPathTriple(
+				subject,
+				[
+					rdfNamespaces.wdt + propertyId,
+					this.syntaxBuilder.buildPropertyPath( '*', [
+						{
+							termType: 'NamedNode',
+							value: rdfNamespaces.wdt + this.getSubclassPropertyId( propertyId ),
+						},
+					] ),
+				],
+				object,
+			),
+		] );
+	}
+
+	private buildTruthyRegardlessPattern(
+		subjectVariableName: string,
+		propertyId: string,
+		subclasses: boolean,
+		object: Term,
+	): Pattern {
+		const subject: Term = {
+			termType: 'Variable',
+			value: subjectVariableName,
 		};
 
 		if ( !subclasses ) {
