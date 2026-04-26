@@ -62,6 +62,40 @@
 						</template>
 					</CdxField>
 				</div>
+				<details class="querybuilder__magazines-section">
+					<summary class="querybuilder__magazines-summary">
+						<span class="querybuilder__magazines-section-title">
+							Available magazines
+						</span>
+						<span class="querybuilder__magazines-summary-hint">
+							Open to browse by country and copy a magazine name
+						</span>
+					</summary>
+					<p class="querybuilder__magazines-section-description">
+						Click any magazine name to copy it to the clipboard, then paste it into your condition.
+					</p>
+					<div
+						v-for="countryGroup in magazineGroups"
+						:key="countryGroup.country"
+						class="querybuilder__magazines-country-group"
+					>
+						<h4 class="querybuilder__magazines-country-title">
+							{{ countryGroup.country }}
+						</h4>
+						<div class="querybuilder__magazines-grid">
+							<button
+								v-for="magazine in countryGroup.magazines"
+								:key="`${countryGroup.country}-${magazine.label}`"
+								type="button"
+								class="querybuilder__magazine-button"
+								:title="`Click to copy: ${magazine.label}`"
+								@click="copyMagazineNameToClipboard( magazine.label )"
+							>
+								{{ magazine.label }}
+							</button>
+						</div>
+					</div>
+				</details>
 				<div
 					v-if="!conditionRows.length"
 					v-i18n="{ msg: 'query-builder-condition-placeholder' }"
@@ -148,6 +182,7 @@ import languagedata from '@wikimedia/language-data';
 import queryExamples, { QueryExample } from '@/queryExamples';
 import { MenuItem } from '@/types';
 import { useStore } from '@/store/index';
+import magazines, { Magazine } from '@/magazines';
 
 let handleOutsideClick: ( event: MouseEvent | TouchEvent ) => void;
 
@@ -239,6 +274,23 @@ export default defineComponent( {
 				} ) ),
 			];
 		},
+		magazineGroups(): Array<{ country: string; magazines: Magazine[] }> {
+			const groupedMagazines = new Map<string, Magazine[]>();
+			for ( const magazine of magazines ) {
+				const countryMagazines = groupedMagazines.get( magazine.country ) || [];
+				countryMagazines.push( magazine );
+				groupedMagazines.set( magazine.country, countryMagazines );
+			}
+
+			return [ ...groupedMagazines.entries() ]
+				.sort( ( [ firstCountry ], [ secondCountry ] ) => firstCountry.localeCompare( secondCountry, undefined, {
+					sensitivity: 'base',
+				} ) )
+				.map( ( [ country, countryMagazines ] ) => ( {
+					country,
+					magazines: countryMagazines,
+				} ) );
+		},
 		selectedExample: {
 			get(): string {
 				return this.selectedExampleId;
@@ -287,7 +339,7 @@ export default defineComponent( {
 		},
 		isAboveOr( index: number ): boolean {
 			return ( index + 1 ) !== this.conditionRows.length &&
-          this.conditionRows[ index + 1 ].conditionRelation === ConditionRelation.Or;
+				this.conditionRows[ index + 1 ].conditionRelation === ConditionRelation.Or;
 		},
 		isBelowOr( index: number ): boolean {
 			return index !== 0 && this.conditionRows[ index ].conditionRelation === ConditionRelation.Or;
@@ -343,6 +395,22 @@ export default defineComponent( {
 			currentUrl.searchParams.set( 'query', example.serializedQuery );
 			window.history.replaceState( {}, '', currentUrl.toString() );
 			this.encodedQuery = '';
+		},
+		async copyMagazineNameToClipboard( magazineName: string ): Promise<void> {
+			if ( !magazineName ) {
+				return;
+			}
+			if ( navigator.clipboard?.writeText ) {
+				await navigator.clipboard.writeText( magazineName );
+				return;
+			}
+
+			const textarea = document.createElement( 'textarea' );
+			textarea.value = magazineName;
+			document.body.appendChild( textarea );
+			textarea.select();
+			document.execCommand( 'copy' );
+			document.body.removeChild( textarea );
 		},
 	},
 	watch: {
@@ -572,6 +640,96 @@ body.overflow-hidden-on-mobile {
 
 	@media (min-width: $tinyViewportWidth) {
 		position: relative;
+	}
+}
+
+.querybuilder__magazines-section {
+	margin-block-end: var(--dimension-layout-small);
+	padding: 0;
+	border: $border-width-base $border-style-base $border-color-subtle;
+	border-radius: $border-radius-base;
+	background-color: $background-color-neutral-subtle;
+	overflow: hidden;
+
+	&[open] {
+		padding-block-end: var(--dimension-layout-xsmall);
+	}
+
+	> summary {
+		padding: var(--dimension-layout-xsmall);
+		display: flex;
+		flex-direction: column;
+		gap: var(--dimension-layout-xxsmall);
+		cursor: pointer;
+		list-style: none;
+	}
+
+	> summary::-webkit-details-marker {
+		display: none;
+	}
+}
+
+.querybuilder__magazines-section-title {
+	@include heading-5;
+
+	margin: 0;
+}
+
+.querybuilder__magazines-section-description {
+	@include body-s;
+
+	margin: 0 var(--dimension-layout-xsmall) var(--dimension-layout-xsmall);
+	color: $color-subtle;
+}
+
+.querybuilder__magazines-summary-hint {
+	@include body-s;
+
+	color: $color-subtle;
+}
+
+.querybuilder__magazines-country-group {
+	padding-inline: var(--dimension-layout-xsmall);
+
+	& + & {
+		margin-block-start: var(--dimension-layout-xsmall);
+	}
+}
+
+.querybuilder__magazines-country-title {
+	@include heading-5;
+
+	margin: 0 0 var(--dimension-layout-xxsmall);
+}
+
+.querybuilder__magazines-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	gap: var(--dimension-layout-xsmall);
+}
+
+.querybuilder__magazine-button {
+	@include body-s;
+
+	padding: var(--dimension-layout-xsmall);
+	text-align: start;
+	border: $border-width-base $border-style-base $border-color-subtle;
+	border-radius: $border-radius-base;
+	background-color: $background-color-base;
+	cursor: pointer;
+	transition: all 0.2s ease;
+
+	&:hover {
+		background-color: $background-color-interactive-subtle;
+		border-color: $color-subtle;
+	}
+
+	&:active {
+		background-color: $background-color-progressive-subtle;
+	}
+
+	@media (max-width: $tinyViewportWidth) {
+		grid-column: span 1;
 	}
 }
 </style>
